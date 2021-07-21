@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../Css/bootstrap-utilities.rtl.min.css">
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="../Css/index.css">
+    <link rel="stylesheet" href="../Css/index.css" media="screen" media="print">
     <script src="../Js/index.js"></script>
     <title>Document</title>
 </head>
@@ -21,15 +21,19 @@
     <div class="ContornoExterior">
         <div class="container-fluid nivel0">
             <div class="row text-center nivel1">
-                <div class="col-md-3 titulo">
+                <div class="col-md-4 titulo">
                     Cooperativa de Ahorro y Credito Societaria<br>
                     "Solucredit" San Silvestre Ltda.
                 </div>
-                <div class="col-md-6 padre titulo"> <div class="hijo">REPORTE DE INCIDENTES DE SEGURIDAD DE LA INFORMACION</div></div>
-                <div class="col-md-3">
+                <div class="col-md-6 padre titulo"> 
+                    <div class="hijo">REPORTE DE INCIDENTES DE SEGURIDAD DE LA INFORMACION</div>
+                </div>
+                <div class="col-md-2">
                     <div class="row">
-                        <div class="sub1 titulo2">CODIGO:</div>
-                        <div class="sub2 titulo2">SOLUINC-2021-</div>
+                        <div class="col-md-12 titulo2">CODIGO:</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 titulo2">SOLUINC-2021-</div>
                     </div>
                 </div>
             </div>
@@ -74,39 +78,148 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5" style="border-right: black 1px solid;">
                         <div class="row">
                             <div class="col-md-12 text-center titulo">
                                 Origen del Incidente
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding: 3px; padding-bottom: 3px;">
                             <div class="col-md-2 titulo">Interno:</div>
-                            <div class="col-md-4"><input type="checkbox" name="" id="checkbox"></div>
+                            <div class="col-md-4 text-center"><input type="text" name="" id="" class="text-center" style="border: black 1px solid;"></div>
                             <div class="col-md-2 titulo">Externo:</div>
-                            <div class="col-md-4"><input type="checkbox" name="" id="checkbox"></div>
+                            <div class="col-md-4 text-center"><input type="text" name="" id="" class="text-center" style="border: black 1px solid;"></div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="row">
                             <div class="col-md-12 text-center titulo">
                                 Prioridad
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-1">Alto</div>
-                            <div class="col-md-2"><input type="checkbox" name="" id="checkbox"></div>
-                            <div class="col-md-1">Medio</div>
-                            <div class="col-md-2"><input type="checkbox" name="" id="checkbox"></div>
-                            <div class="col-md-2">Bajo</div>
-                            <div class="col-md-2"><input type="checkbox" name="" id="checkbox"></div>
+                        <div class="row" style="padding: 3px; padding-bottom: 5px;">
+                            <div class="col-md-1 titulo">Alto</div>
+                            <div class="col-md-3"><input type="text" name="" id="" class="text-center" style="border: black 1px solid;"></div>
+                            <div class="col-md-1 text-center titulo">Medio</div>
+                            <div class="col-md-3"><input type="text" name="" id="" class="text-center" style="border: black 1px solid;"></div>
+                            <div class="col-md-1 text-center titulo">Bajo</div>
+                            <div class="col-md-3"><input type="text" name="" id="" class="text-center" style="border: black 1px solid;"></div>
                         </div>
                     </div>
                 </div>
-                <div class="row"></div>
+                <div class="row">
+                    <textarea name="" id="" cols="30" rows="3" placeholder="Revision Incial"></textarea>
+                </div>
             </div>
           </div>
         <!--Final Nivel-->
+
+        <!--Nivel 4-->
+           <div class="row">
+               <div class="col-md-1">
+                   Parte 3
+               </div>
+               <div class="col-md-11">
+                   <div class="row">
+                    <div class="col-md-12">
+                        <span class="titulo">SEGUIMIENTO</span> <span class="titulo2">(Esta tercera parte debe ser llenada por el Oficial de Seguridad de la Informacion y/o el Encargado de Tecnologia de la Informacion)</span>
+                    </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-6" style="border-right: black 1px solid; ;">
+                        <div class="row">
+                           <label for="" style="font-size: 9px;">Realizado por:</label>
+                           <textarea name="" id="" cols="30" rows="2" placeholder=""></textarea>
+                        </div>
+                       </div>
+                       <div class="col-md-6">
+                           <div class="row">
+                             <label for="" style="font-size: 9px;">Realizado por:</label>  
+                             <textarea name="" id="" cols="30" rows="2" placeholder=""></textarea>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        <!--Final Nivel 4-->
+
+        <!--Nivel 5-->
+           <div class="row">
+               <div class="col-md-1">
+                   Parte 4
+               </div>
+               <div class="col-md-11">
+                   <div class="row">
+                       <div class="col-md-12">
+                           <span class="titulo">
+                               SOLUCION
+                           </span>
+                           <span class="titulo2">
+                               (Esta cuarta parte debe ser llenada por el Encargado de Tecnologia de la Informacion)
+                           </span>
+                       </div>
+                   </div>
+                   <div class="row">
+                        <textarea name="" id="" cols="30" rows="2" placeholder="Solucion que realizao el Encargado de Tecnolgia de la Informacion"></textarea>
+                   </div>
+               </div>
+           </div>
+        <!--Final Nivel 5-->
+
+        <!--Nivel 6-->
+           <div class="row">
+               <div class="col-md-1">
+                   Parte 5
+               </div>
+               <div class="col-md-11">
+                   <div class="row">
+                       <div class="col-md-12">
+                           <span class="titulo">EVALUACION</span><span class="titulo2"> (Este punto debe ser llenado por el Oficial de Seguridad de la Informacion)</span>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="row">
+                             <label for="" style="font-size: 9px;">Nivel de Criticidad</label>
+                           </div>
+                           <div class="row text-center" style="padding: 7px;">
+                              <div class="col-md-1 titulo">ALTA</div>
+                              <div class="col-md-2"><input type="text" name="" id="" style="border: black 1px solid; text-align: center;"></div>
+                              <div class="col-md-1 titulo">MEDIA</div>
+                              <div class="col-md-2"><input type="text" name="" id="" style="border: black 1px solid; text-align: center;"></div>
+                              <div class="col-md-1 titulo">BAJA</div>
+                              <div class="col-md-2"><input type="text" name="" id="" style="border: black 1px solid; text-align: center;"></div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row text-center">
+                       <label for="" class="titulo">Clasificacion de Incidentes de Seguridad</label>
+                       <div class="col-md-6">
+                            <div class="row" >
+                               <div class="col-md-2"></div>
+                               <div class="col-md-2 text-start"><input type="checkbox" name="" id=""></div>
+                               <div class="col-md-8 text-start">Perdida de servicio</div>
+                            </div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           <div class="row"></div>
+                           
+                           <input type="checkbox" name="" id=""> Perdida de equipo o instalaciones
+                           <input type="checkbox" name="" id=""> Sobrecargo o mal funcionamiento del sistema
+                       </div>
+                       <div class="col-md-6"></div>
+                   </div>
+                   <div class="row"></div>
+                   <div class="row"></div>
+               </div>
+           </div>
+        <!--Final Nivel 6-->
         </div>
     </div>
 </form>

@@ -1,3 +1,22 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    width: 21.59cm;
+     height: 27.94cm;
+}
+@page
+{
+    size: letter; 
+    margin: 0;  
+}
+@media print{
+    html, body{
+     width: 21.59cm;
+     height: 27.94cm;
+    }
+}
+
 .ContornoExterior{
     padding: 7px;
     padding-bottom: 50px;
@@ -23,12 +42,12 @@
 }
 .titulo
 {
-    font-size: 13px;
+    font-size: 10px;
     font-weight: bold;
 }
 .titulo2
 {
-    font-size: 13px;
+    font-size: 9px;
 }
 .subtitulo
 {
@@ -45,6 +64,4 @@ input
     width: 100%;
     border-style: none;
 }
-#checkbox{
-    width: 100%;
-}
+
