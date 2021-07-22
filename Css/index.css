@@ -1,9 +1,8 @@
 body
 {
-    margin: 0;
-    padding: 0;
     width: 21.59cm;
-     height: 27.94cm;
+    height: 27.94cm;
+    margin: 10px;
 }
 @page
 {
@@ -19,7 +18,7 @@ body
 
 .ContornoExterior{
     padding: 7px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     border: black 2px solid;
 }
 .nivel0 > div > div
@@ -30,15 +29,9 @@ body
 {
     border-bottom: black 1px solid;
 }
-.padre
+#Centrado
 {
-    position: relative;
-}
-.hijo
-{
-    position: absolute;
-    top: 25%;
-    margin-left: 25%;
+    margin: auto;
 }
 .titulo
 {
@@ -51,7 +44,7 @@ body
 }
 .subtitulo
 {
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .nivel1 > div
@@ -64,4 +57,43 @@ input
     width: 100%;
     border-style: none;
 }
+textarea
+{
+    font-size: 10px;
+}
+.estiloCheckBox-Incidentes
+{
+    padding-top: 15px;
+}
+
+.estiloCheckBox-Incidentes > div > div
+{
+  text-align: left;
+  width: auto;  
+  padding-left: 5px;
+  
+}
+.estiloCheckBox-Incidentes > div > div > input
+{
+  width: 10px;
+}
+
+.responsablesfirma
+{
+    font-size: 7px;
+}
+.pieFirmas
+{
+  padding-top: 60px;  
+  width: 90%;
+  margin: auto;
+}
+
+hr
+{
+   color: black;
+   height: 10px;
+   margin: 0%;
+}
+
 
