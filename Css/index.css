@@ -4,18 +4,6 @@ body
     height: 27.94cm;
     margin: 10px;
 }
-@page
-{
-    size: letter; 
-    margin: 0;  
-}
-@media print{
-    html, body{
-     width: 21.59cm;
-     height: 27.94cm;
-    }
-}
-
 .ContornoExterior{
     padding: 7px;
     padding-bottom: 10px;
@@ -32,6 +20,14 @@ body
 #Centrado
 {
     margin: auto;
+}
+
+.rote
+{
+    -webkit-transform: rotate(-90deg); 
+    -moz-transform: rotate(-90deg);
+    width: 170%;
+    margin-top: 65%;
 }
 .titulo
 {
@@ -55,11 +51,18 @@ body
 input
 {
     width: 100%;
+    height: 17px;
     border-style: none;
+    font-size: 12px;
 }
 textarea
 {
-    font-size: 10px;
+    font-size: 11px;
+    border-style: none;
+}
+textarea:hover
+{
+  border: #18ba0d 1px solid;
 }
 .estiloCheckBox-Incidentes
 {
@@ -80,7 +83,7 @@ textarea
 
 .responsablesfirma
 {
-    font-size: 7px;
+    font-size: 8px;
 }
 .pieFirmas
 {
