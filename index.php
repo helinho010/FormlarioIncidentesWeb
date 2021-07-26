@@ -1,3 +1,6 @@
+<?php
+    include 'Php/datosIniciales.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,9 +59,9 @@
                     <div class="col-md-1 titulo"><label for="fecha">Fecha:</label> </div>
                     <div class="col-md-2 titulo2"><input type="date" name="" id="fecha" style="font-size: 10px;"></div>
                     <div class="col-md-1 titulo"><label for="hora">Hora:</label> </div>
-                    <div class="col-md-3 titulo2"><input type="text" name="hora" id="hora"></div>
+                    <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" value="<?php echo $hora_inicial;?>"></div>
                     <div class="col-md-1 titulo"><label for="oficina">Oficnica:</label> </div>
-                    <div class="col-md-4 titulo2"><input type="text" name="" id="oficina"></div>
+                    <div class="col-md-4 titulo2"><input type="text" name="" id="oficina" value="<?php echo $Oficna_inicial;?>"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-2 titulo"> <label for="reportado-por">Reportado por:</label></div>
