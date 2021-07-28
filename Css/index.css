@@ -99,4 +99,12 @@ hr
    margin: 0%;
 }
 
+/*
+*Estilo que deshabilita el raton y le da un opacidad al 
+*/
+.disableDiv 
+{
+    pointer-events: none;
+    opacity: 0.4; 
+}
 

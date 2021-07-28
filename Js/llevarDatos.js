@@ -23,8 +23,10 @@ $("button").on("click", function (params) {
     success: function(respuesta){
         if (respuesta == 't') {
             loginExitoso();
+            //alert (respuesta);
         } else {
             loginFracaso();
+            //alert(respuesta);
         }
     }
   });

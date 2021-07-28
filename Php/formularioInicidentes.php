@@ -1,5 +1,8 @@
 <?php
     include 'datosIniciales.php';
+    session_start();
+    if ( count($_SESSION) > 0)
+    {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +23,9 @@
     <title>Document</title>
 </head>
 <body>
+<div class="tituloFormulario text-center">
+    <h4>FORMULARIO DE INCIDENTES EN SEGURIDAD DE LA INFORMACION</h4>
+</div>
 <form action="" name="IncSegInf">
     <div class="ContornoExterior">
         <div class="container-fluid nivel0">
@@ -65,7 +71,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2 titulo"> <label for="reportado-por">Reportado por:</label></div>
-                    <div class="col-md-4 titulo2"><input type="text" name="reportado-por" id="reportado-por" value="<?php echo $_SESSION['soluNombre'];?>"></div>
+                    <div class="col-md-4 titulo2"><input type="text" name="reportado-por" id="reportado-por" value="<?php echo $_SESSION['soluNombre']." ".$_SESSION['soluApPat']." ".$_SESSION['soluApMat'];?>"></div>
                     <div class="col-md-1 titulo"><label for="cargo">Cargo:</label></div>
                     <div class="col-md-5 titulo2"><input type="text" name="" id="cargo" value="<?php echo $_SESSION['soluCargo'];?>"></div>  
                 </div>
@@ -123,7 +129,7 @@
                 </div>
             </div>
           </div>
-        <!--Final Nivel-->
+        <!--Final Nivel 3-->
 
         <!--Nivel 4-->
            <div class="row">
@@ -392,4 +398,9 @@
 </html>
 
 
-
+<?php
+    }else
+    {
+        header("Location: $urlraiz");
+    }
+?>

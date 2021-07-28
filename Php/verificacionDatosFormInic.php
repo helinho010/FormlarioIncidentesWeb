@@ -14,14 +14,28 @@ include_once 'datosIniciales.php';
       $row=pg_fetch_row($repConsulta1);
       if ($row[0]=='t' || $row[0] =='true' || $row[0] == 1) {
           session_start();
-          /*$p->setQuery("select credencialesuser('$usuarioajax','$contraseniaajax')");
-          $p-> RealizarConsulta();*/
-          $_SESSION['soluUsuario']="flbernal@solucredit.com.bo";
-          $_SESSION['soluNombre']="Fabrizzio ";
-          $_SESSION['soluApPat']="Bernal";
-          $_SESSION['soluApMat']="Gonzales";
-          $_SESSION['soluCi']="6725038";
-          $_SESSION['soluCargo']="Cajero";
+          $p->setQuery("select getidfuncionario('$usuarioajax', '$contraseniaajax')");
+          $p-> RealizarConsulta();
+          $respConsulta2= $p->getConsulta();
+          $row2= pg_fetch_row($respConsulta2);
+          $p->setQuery("select datosFuncionario($row2[0])");
+          $p-> RealizarConsulta();
+          $respConsulta3=$p->getConsulta();
+          $row3=pg_fetch_row($respConsulta3);
+          $_SESSION['soluUsuario']=$usuarioajax;
+          $row3[0]= str_replace('"',"",$row3[0]);
+          $row3[0]= str_replace('(',"",$row3[0]);
+          $row3[0]= str_replace(')',"",$row3[0]);
+          $_SESSION['soluNombre']=substr($row3[0], 0 , strpos($row3[0], ','));
+          $row3[0]=substr( "$row3[0]", strpos("$row3[0]",",")+1, strlen("$row3[0]") );
+          $_SESSION['soluApPat']=substr($row3[0], 0, strpos($row3[0],","));
+          $row3[0]=substr( $row3[0], strpos($row3[0],",")+1, strlen($row3[0]) );
+          $_SESSION['soluApMat']=substr($row3[0], 0, strpos($row3[0],","));
+          $row3[0]=substr( $row3[0], strpos($row3[0],",")+1, strlen($row3[0]) );
+          $_SESSION['soluCi']=substr($row3[0], 0, strpos($row3[0],","));
+          $row3[0]=substr( $row3[0], strpos($row3[0],",")+1, strlen($row3[0]) );
+          $_SESSION['soluCargo']=$row3[0];
+          //echo ($_SESSION['soluNombre'] ."\n". $_SESSION['soluApPat'] ."\n".$_SESSION['soluApMat'] ."\n".$_SESSION['soluCi'] ."\n".$_SESSION['soluCargo'] ."\n". "fin");
       }
       echo ($row[0]);
     } catch (\Throwable $th) {
