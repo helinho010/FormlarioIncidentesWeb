@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../Css/bootstrap-grid.rtl.min.css">
+    <link rel="stylesheet" href="../Css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../Css/bootstrap-reboot.rtl.min.css">
+    <link rel="stylesheet" href="../Css/bootstrap-utilities.min.css">
+    <link rel="stylesheet" href="../Css/bootstrap-utilities.rtl.min.css">
+    <link rel="stylesheet" href="../Css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="../Css/panelAdmin.css">
+    <title>Panel de Administracion</title>
+</head>
+<body>
+   <div class="">
+       <div class="row parteSuperior">
+           <div class="col-md-3">
+              <div class="imgSolucredit">
+                  <img class="img-fluid" src="../Imagenes/solucreditIcono.jpg" alt="IconoSolucredit"> 
+              </div>  
+           </div>
+           <div class="col-md-9 text-start notificacionesFuncionario">
+               <div class="notificaciones">
+                    <a href="">
+                        <img src="../Imagenes/Iconos/1x/outline_article_black_24dp.png" class="img-fluid" alt="">
+                            <span class="position-absolute top-2 start-1 badge rounded-pill bg-success">
+                                99+
+                            </span>
+                        </img>
+                    </a>
+               </div>
+               <div class="opcionesFuncionario">
+                    <div class="btn-group">
+                        <!-- Example single danger button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              <img src="../Imagenes/user.png" class="img-fluit" width="40px" alt="">
+                            </button>
+                                <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Inf. Personal</a></li>
+                                <li><a class="dropdown-item" href="#" id="cerrarSession">Cerrar Session</a></li>
+                                </ul>
+                        </div>
+                  </div>
+               </div>
+           </div>
+        </div>
+       <div class="row">
+        <div class="col-md-3 barraLateral">
+           <div class="listaOpciones">
+               <a href="#" id="llenarFormulario">
+                   <li><img src="../Imagenes/Iconos/1x/outline_post_add_white_36dp.png" alt="">  Llenar Formulario de Incidentes</li>
+               </a>
+               <a href="#" id="listarFormularios">
+                   <li><img src="../Imagenes/Iconos/1x/outline_format_list_numbered_rtl_white_36dp.png" alt="">  Lista de formularios reportados</li>
+               </a>
+           </div>  
+        </div>
+        <div class="col-md-9">
+          <div id="mostrarContenido"></div>
+        </div>
+      </div>
+   </div>  
+
+   <div class="datosPersonalesFun">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Correo Institucional:</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" value="">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nombre Completo: </label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" value="">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">CI:</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" value="">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Cargo</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" value="">
+      </div>
+   </div>
+
+ <script src="../Js/jquery-3.6.0.min.js"></script>
+ <script src="../Js/bootstrap.min.js"></script>    
+ <script src="../Js/bootstrap.esm.min.js"></script>
+ <script src="../Js/bootstrap.bundle.min.js"></script>
+ <script src="../Js/panelAdmin.js"></script>
+</body>
+</html>

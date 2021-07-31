@@ -1,0 +1,63 @@
+body
+{
+    background: #f6eff9;
+}
+body > div > div > div > .imgSolucredit > img
+{
+    height: 70px;    
+}
+body > div > div > div > .imgSolucredit
+{
+    background: #ff8b00;
+}
+.notificacionesFuncionario > div
+{
+    display: inline-block;
+    margin-right: 60px;
+}
+.notificacionesFuncionario > div > a
+{
+    list-style: none;
+    text-decoration: none;
+}
+.parteSuperior > div
+{
+    border-bottom: black 1px solid;
+    margin-top: 3px;
+}
+.listaOpciones
+{
+    
+    height: 600px;
+    background: #212429;
+}
+.barraLateral > div > a
+{
+    display: block;
+    width: 100%;
+    height: 70px;
+    background: #212429;
+    list-style: none;
+    text-decoration: none;
+    color: #ffffff;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.barraLateral div > a:hover
+{
+    background:#fff;
+    color: #212429;  
+}
+
+.opcionesFuncionario
+{
+    display: none;
+}
+.opcionesFuncionario:hover
+{
+    display: inline-block;
+}
+
+

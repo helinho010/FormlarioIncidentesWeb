@@ -3,8 +3,14 @@ function loginExitoso()
   $("#exitoError").removeAttr("hidden");
   $("#exitoError").removeAttr("class");
   $("#exitoError").attr("class","alert alert-success");
-  $("#exitoError").text("Inicio exitoso!");
-  setTimeout(window.location.href="../Php/index.php", 10000);
+  $("#exitoError").text("Inicio de Session exitoso!");
+  setTimeout(function(){  
+  $("#divFormulario").attr("hidden","true");
+  $("#exitoError").attr("hidden","true");
+  $("#Opciones").load("../Php/botonesAccion.php");
+  $("#datosDelFuncionario").load("../Php/datosFunc.php");
+  $(".datos-y-notificaciones").removeAttr("hidden");
+  },3000);
 }
 function loginFracaso() 
 {
@@ -31,6 +37,14 @@ $("button").on("click", function (params) {
     }
   });
 });
+
+
+
+  $("#btncheck1").on('click',function(){
+    alert("Si precioneamos el primer botons");
+  });
+
+
 
 
     

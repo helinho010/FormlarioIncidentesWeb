@@ -1,3 +1,8 @@
+<?php
+ include_once 'Php/funcionesPrincipales.php';
+ session_start();
+ //print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +21,7 @@
     <title>Inicio de Session</title>
 </head>
 <body>
-    <div class="contenedorFormulario">
+    <div class="contenedorFormulario" id="divFormulario">
         <div class="contenedorFormularioInterno">
             <form class="form-control" id="formularioInicio">
                     <p class="text-center">Formulario de Inicidentes en Seguridad de la Informacion</p>
@@ -43,6 +48,30 @@
                 <div class="alert alert-success" id="exitoError" role="alert" hidden></div>
         </div>
         <div class="col-md-4"></div>
+    </div>
+
+    <div class="container-fluid datos-y-notificaciones" hidden="true">
+        <div class="row">
+            <span class="text-center"><h4>Datos personales y notificaciones</h4></span>
+            <div class="col-md-4">
+                <div class="datosPersonalesFun" id="datosDelFuncionario">
+                    
+                </div>
+            </div>
+            <div class="col-md-8 notificacionesButton">
+                <div class="row">
+                    <div class="" id="Opciones">
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="resultados">
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
     </div>
     
     <footer>
