@@ -20,9 +20,9 @@
     <input type="checkradius" class="btn-check" id="btncheck1" autocomplete="off">
     <label class="btn btn-outline-primary" for="btncheck1"><?php echo mostrarBtnPorFuncionario();?></label>
 
-    <input type="checkradius" class="btn-check" id="btncheck2" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck2">Modificar datos Personales</label>
+    <input type="checkradius" class="btn-check" id="modDatosFunc" autocomplete="off">
+    <label class="btn btn-outline-primary" for="modDatosFunc">Modificar datos Personales</label>
 
-    <input type="checkradius" class="btn-check" id="btncheck3" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck3">Cerrar Session</label>
+    <input type="checkradius" class="btn-check" id="cerrarSession" autocomplete="off">
+    <label class="btn btn-outline-primary" for="cerrarSession">Cerrar Session</label>
 </div>
