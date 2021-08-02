@@ -47,7 +47,7 @@
                                         <span class="titulo">CODIGO:</span>
                                     </div>
                                     <div class="row" style="border-top: black 1px solid;">
-                                        <span class="titulo">SOLUINC-2021-</span>
+                                        <span class="titulo">SOLUINC-2021-005</span>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1 titulo"><label for="fecha">Fecha:</label> </div>
-                                    <div class="col-md-2 titulo2"><input type="date" name="24/07/2021" id="fecha" style="font-size: 10px;"></div>
+                                    <div class="col-md-2 titulo2"><input type="date" name="" value="<?php echo date("Y-m-d");?>" id="fecha" style="font-size: 10px;"></div>
                                     <div class="col-md-1 titulo"><label for="hora">Hora:</label> </div>
                                     <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" value="<?php echo date('h:m a');?>"></div>
                                     <div class="col-md-1 titulo"><label for="oficina">Oficnica:</label> </div>
@@ -396,18 +396,19 @@
             </div>
             <div class="col-md-1">
                 <div class="btnsFormulario">
-                    <button type="button" class="btn btn-success">Guardar Datos</button>        
-                    <button type="button" class="btn btn-warning">Borrar datos</button>
-                    <button type="button" class="btn btn-secondary">Volver al menu</button>
+                    <button type="button" class="btn btn-success" id="guardarDatos" >Guardar Datos</button>        
+                    <button type="button" class="btn btn-warning" id="borrarDatos">Borrar datos</button>
+                    <button type="button" class="btn btn-secondary" id="volverMenu" >Volver al menu</button>
                 </div>
             </div>
         </div>
     </div>
     
-
-<script src="../Js/bootstrap.min.js"></script>    
-<script src="../Js/bootstrap.esm.min.js"></script>
-<script src="../Js/bootstrap.bundle.min.js"></script>
+<script src="../Js/jquery-3.6.0.min.js"></script>
+<script src="../Js/bootstrap.min.js"></script>
+<script src="../Js/controlFormulario.js"></script>    
+<!--script src="../Js/bootstrap.esm.min.js"></script>
+<script src="../Js/bootstrap.bundle.min.js"></script-->
 </body>
 </html>
 

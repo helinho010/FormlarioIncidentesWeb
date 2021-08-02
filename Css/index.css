@@ -1,4 +1,4 @@
-body
+.formularioInicial
 {
     width: 21.59cm;
     height: 27.94cm;
@@ -108,3 +108,9 @@ hr
     opacity: 0.4; 
 }
 
+.btnsFormulario > button
+{
+    width: 150px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

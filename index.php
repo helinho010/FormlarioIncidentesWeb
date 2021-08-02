@@ -1,7 +1,8 @@
 <?php
  include_once 'Php/funcionesPrincipales.php';
+ date_default_timezone_set('America/La_Paz');
  session_start();
- //print_r($_SESSION);
+ print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,12 +54,12 @@
     <div class="container-fluid datos-y-notificaciones" hidden="true">
         <div class="row">
             <span class="text-center"><h4>Datos personales y notificaciones</h4></span>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="datosPersonalesFun" id="datosDelFuncionario">
                     
                 </div>
             </div>
-            <div class="col-md-8 notificacionesButton">
+            <div class="col-md-7 notificacionesButton">
                 <div class="row">
                     <div class="" id="Opciones">
                         
