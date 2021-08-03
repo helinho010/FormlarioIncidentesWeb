@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="../Css/index.css" media="screen" media="print">
+    <link rel="shortcut icon" href="../Imagenes/iconoFormulario.png" type="image/x-icon">
     <script src="../Js/index.js"></script>
-    <title>Document</title>
+    <title>Formulario de Incidentes</title>
 </head>
 <body>
     <div class="container">
@@ -66,20 +67,20 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1 titulo"><label for="fecha">Fecha:</label> </div>
-                                    <div class="col-md-2 titulo2"><input type="date" name="" value="<?php echo date("Y-m-d");?>" id="fecha" style="font-size: 10px;"></div>
+                                    <div class="col-md-2 titulo2"><input type="date" name="fecha" id="fecha" maxlength="15" value="<?php echo date("Y-m-d");?>"  style="font-size: 10px;"></div>
                                     <div class="col-md-1 titulo"><label for="hora">Hora:</label> </div>
-                                    <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" value="<?php echo date('h:m a');?>"></div>
+                                    <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" maxlength="10" value="<?php echo date('h:m a');?>"></div>
                                     <div class="col-md-1 titulo"><label for="oficina">Oficnica:</label> </div>
-                                    <div class="col-md-4 titulo2"><input type="text" name="" id="oficina" value="<?php echo $Oficna_inicial;?>"></div>
+                                    <div class="col-md-4 titulo2"><input type="text" name="" id="oficina" maxlength="70" value="<?php echo $Oficna_inicial;?>"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 titulo"> <label for="reportado-por">Reportado por:</label></div>
-                                    <div class="col-md-4 titulo2"><input type="text" name="reportado-por" id="reportado-por" value="<?php echo $_SESSION['soluNombre']." ".$_SESSION['soluApPat']." ".$_SESSION['soluApMat'];?>"></div>
+                                    <div class="col-md-4 titulo2"><input type="text" name="reportado-por" id="reportado-por" maxlength="50" value="<?php echo $_SESSION['soluNombre']." ".$_SESSION['soluApPat']." ".$_SESSION['soluApMat'];?>"></div>
                                     <div class="col-md-1 titulo"><label for="cargo">Cargo:</label></div>
-                                    <div class="col-md-5 titulo2"><input type="text" name="" id="cargo" value="<?php echo $_SESSION['soluCargo'];?>"></div>  
+                                    <div class="col-md-5 titulo2"><input type="text" name="cargo" id="cargo" maxlength="70" value="<?php echo $_SESSION['soluCargo'];?>"></div>  
                                 </div>
                                 <div class="row">
-                                    <textarea name="" id="" cols="30" rows="3" placeholder="Detalle el evento registrado"></textarea>
+                                    <textarea name="detalleInicidente" id="detalleIncidente" cols="30" rows="3" maxlength="300" placeholder="Detalle el evento registrado"></textarea>
                                 </div>
                                 </div>  
                             </div>

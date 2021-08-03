@@ -1,14 +1,20 @@
-<?
+<?php
     require_once '../../sistemasdetickets/Php/BDConexion.php';
     include_once 'datosIniciales.php';
     session_start();
-    $codigo=$_POST[''];
-    $fecha=$_POST[''];
-    $hora=$_POST[''];
-    $oficina=$_POST[''];
-    $reportadoPor=$_POST[''];
-    $cargo=$_POST[''];
-    $datelleIncidente=$_POST[''];
+    if(count($_SESSION)>0)
+    {
+        $codigo=$_POST[''];
+        $fecha=$_POST['fecha'];
+        $hora=$_POST['hora'];
+        $oficina=$_POST['oficina'];
+        $reportadoPor=$_POST['reportadoPor'];
+        $cargo=$_POST['cargo'];
+        $datelleIncidente=$_POST['detalle'];    
+        
+
+    }
+    
     $OrigenIncidenteInterno=$_POST[''];
     $OrigenIncidenteExterno=$_POST[''];
     $PrioridadAlto=$_POST[''];
@@ -47,8 +53,6 @@
     $responsable2=$_POST[''];
     $responsable3=$_POST[''];
     $responsable4=$_POST[''];
-
+    
     print_r($_POST); 
-
-
 ?>
