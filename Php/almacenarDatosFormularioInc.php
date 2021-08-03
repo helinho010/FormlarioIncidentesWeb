@@ -2,20 +2,31 @@
     require_once '../../sistemasdetickets/Php/BDConexion.php';
     include_once 'datosIniciales.php';
     session_start();
-    if(count($_SESSION)>0)
+    /*$mensaje = false;
+    if(count($_SESSION)>0 && $_POST['control'] == 1)
     {
-        $codigo=$_POST[''];
+        $codigo=$_POST['codigo'];
         $fecha=$_POST['fecha'];
         $hora=$_POST['hora'];
         $oficina=$_POST['oficina'];
         $reportadoPor=$_POST['reportadoPor'];
         $cargo=$_POST['cargo'];
         $datelleIncidente=$_POST['detalle'];    
-        
-
-    }
+        try {
+            $conx = new Conexionbd();  
+            $conx-> setUsuario($usuariobd);
+            $conx-> setContrasenia($contraseniabd);
+            $conx->setQuery("insert into incidentedeinformacionfuncionario (codigo, fecha, hora, oficina, reportadoPor, cargo, datelleIncidente) values ('$codigo', '$fecha','$hora','$oficina','$reportadoPor', '$cargo', '$datelleIncidente');");
+            $conx-> RealizarConsulta();
+            $repConsulta1 = $conx->getConsulta();
+            $row=pg_fetch_row($repConsulta1);
+        } catch (\Throwable $th) {
+            $mensaje = $th;
+        }
+        $mensaje = true;
+    }*/
     
-    $OrigenIncidenteInterno=$_POST[''];
+    /*$OrigenIncidenteInterno=$_POST[''];
     $OrigenIncidenteExterno=$_POST[''];
     $PrioridadAlto=$_POST[''];
     $PrioridadMedio=$_POST[''];
@@ -52,7 +63,7 @@
     $responsable1=$_POST[''];
     $responsable2=$_POST[''];
     $responsable3=$_POST[''];
-    $responsable4=$_POST[''];
+    $responsable4=$_POST[''];*/
     
     print_r($_POST); 
 ?>

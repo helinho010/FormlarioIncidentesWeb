@@ -2,7 +2,7 @@
  include_once 'Php/funcionesPrincipales.php';
  date_default_timezone_set('America/La_Paz');
  session_start();
- print_r($_SESSION);
+// print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="Css/bootstrap.min.css">
     <link rel="stylesheet" href="Css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="login/Css/estilosLogin.css">
+    <script src="Js/jquery-3.6.0.min.js"></script>
     <title>Inicio de Session</title>
 </head>
 <body>
@@ -86,7 +87,24 @@
             </div>
         </div>
     </footer>
-<script src="Js/jquery-3.6.0.min.js"></script>
+    <?php
+        if(count($_SESSION)>0)
+        {
+         echo '
+         <script>
+         $("#exitoError").removeAttr("hidden");
+         $("#exitoError").removeAttr("class");
+         $("#exitoError").attr("class","alert alert-success");
+         $("#exitoError").text("Inicio de Session exitoso!"); 
+         $("#divFormulario").attr("hidden","true");
+         $("#exitoError").attr("hidden","true");
+         $("#Opciones").load("../Php/botonesAccion.php");
+         $("#datosDelFuncionario").load("../Php/datosFunc.php");
+         $(".datos-y-notificaciones").removeAttr("hidden");
+         </script>
+         ';   
+        }
+    ?>
 <script src="Js/llevarDatos.js"></script>
 </body>
 </html>

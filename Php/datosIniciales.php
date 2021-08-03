@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('America/La_Paz');
     $urlraiz="http://formulario.com.bo:2402/";
     $usuariobd="helio";
     $contraseniabd="H3l10";

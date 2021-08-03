@@ -1,6 +1,32 @@
 <?php
-    include 'datosIniciales.php';
+    require_once '../../sistemasdetickets/Php/BDConexion.php';
+    include_once 'datosIniciales.php';
     session_start();
+
+    function getCodigoFormulario()
+    {
+        $resultado = "0";
+        try {
+            $conx = new Conexionbd();  
+            $conx-> setUsuario('helio');
+            $conx-> setContrasenia('H3l10');
+            $conx->setQuery("select obtenercodigodeformulario()");
+            $conx-> RealizarConsulta();
+            $row=pg_fetch_row($conx->getConsulta());
+            $resultado = "".$row[0]+1;
+            if(strlen($resultado)==3)
+            {
+            }elseif (strlen()==2) {
+                $resultado = "0".$resultado;
+            }else {
+                $resultado = "00".$resultado;
+            }
+        } catch (\Throwable $th) { 
+            $resultado = $th;
+        }
+       return $resultado;
+    }
+
     if ( count($_SESSION) > 0)
     {
 ?>
@@ -48,12 +74,12 @@
                                         <span class="titulo">CODIGO:</span>
                                     </div>
                                     <div class="row" style="border-top: black 1px solid;">
-                                        <span class="titulo">SOLUINC-2021-005</span>
+                                        <span class="titulo" id="codigoFormulario">SOLUINC-2021-<?php echo getCodigoFormulario(); ?></span>
                                     </div>
                                 </div>
                             </div>
                         <!--Nivel 2-->
-                            <div class="row nivel2">
+                            <div class="row nivel2" id="n2">
                                 <div class="col-md-1">
                                     <div class="row text-center rote">
                                         PARTE 1
@@ -69,7 +95,7 @@
                                     <div class="col-md-1 titulo"><label for="fecha">Fecha:</label> </div>
                                     <div class="col-md-2 titulo2"><input type="date" name="fecha" id="fecha" maxlength="15" value="<?php echo date("Y-m-d");?>"  style="font-size: 10px;"></div>
                                     <div class="col-md-1 titulo"><label for="hora">Hora:</label> </div>
-                                    <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" maxlength="10" value="<?php echo date('h:m a');?>"></div>
+                                    <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" maxlength="10" value="<?php echo date('H:m');?>"></div>
                                     <div class="col-md-1 titulo"><label for="oficina">Oficnica:</label> </div>
                                     <div class="col-md-4 titulo2"><input type="text" name="" id="oficina" maxlength="70" value="<?php echo $Oficna_inicial;?>"></div>
                                 </div>
@@ -86,7 +112,7 @@
                             </div>
                         <!--Final Nivel-->
                         <!--Nivel 3-->
-                        <div class="row nivel3">
+                        <div class="row nivel3" id="n3">
                             <div class="col-md-1">
                                 <div class="row text-center rote">
                                     PARTE 2
@@ -136,7 +162,7 @@
                         <!--Final Nivel 3-->
 
                         <!--Nivel 4-->
-                        <div class="row">
+                        <div class="row" id="n4">
                             <div class="col-md-1">
                                 <div class="row text-center rote">
                                     PARTE 3
@@ -167,7 +193,7 @@
                         <!--Final Nivel 4-->
 
                         <!--Nivel 5-->
-                        <div class="row">
+                        <div class="row" id="n5">
                             <div class="col-md-1">
                                 <div class="row text-center rote">
                                     PARTE 4
@@ -192,7 +218,7 @@
                         <!--Final Nivel 5-->
 
                         <!--Nivel 6-->
-                        <div class="row">
+                        <div class="row" id="n6">
                             <div class="col-md-1">
                                 <div class="row text-center rote">
                                     PARTE 5
@@ -327,7 +353,7 @@
                         <!--Final Nivel 6-->
 
                         <!--Parte 7-->
-                        <div class="row">
+                        <div class="row" id="n7"> 
                             <div class="col-md-1">
                                 <div class="row text-centeper rote">
                                     PARTE 6

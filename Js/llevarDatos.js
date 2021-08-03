@@ -114,11 +114,15 @@ $("button").on("click", function (params) {
   */
     $(document).on("click","#btncheck1",function(){
       window.location.href="http://formulario.com.bo:2402/Php/formularioIncidentes.php";
+      //window.location.href="http://192.168.0.16:2402/Php/formularioIncidentes.php";
     });
 
 /*
 * Fin de la funcion para llenar un nuevo formulario de incidenes
 */
+
+
+
 
 
 
