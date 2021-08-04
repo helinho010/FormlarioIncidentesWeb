@@ -16,6 +16,7 @@ function loginExitoso()
   $("#exitoError").attr("hidden","true");
   $("#Opciones").load("../Php/botonesAccion.php");
   $("#datosDelFuncionario").load("../Php/datosFunc.php");
+  $("#reporteDeFormularios").load("../Php/reporteIncidentesLlenados.php");
   $(".datos-y-notificaciones").removeAttr("hidden");
   },3000);
 }
@@ -97,6 +98,7 @@ $("button").on("click", function (params) {
           setTimeout(function(){  
             $("#Opciones").load("../Php/botonesAccion.php");
             $("#datosDelFuncionario").load("../Php/datosFunc.php");
+            $("#reporteDeFormuluarios").load("Php/reporteIncidentesLlenados.php");
             $(".datos-y-notificaciones").removeAttr("hidden");
             },3000);
         }
@@ -121,6 +123,23 @@ $("button").on("click", function (params) {
 * Fin de la funcion para llenar un nuevo formulario de incidenes
 */
 
+
+
+/*
+* Editar formularios
+*/
+
+$(document).on("click", "a", function(e){
+  var codigoFormulario = $(this).attr("id");
+  $.ajax({
+    type: "POST",
+    url:"../Php/formularioIncidentes.php",
+    data: {"codigoFormulario": codigoFormulario},
+    success: function(respuesta){
+      window.location.href="../Php/formularioIncidentes.php";
+    }
+  });
+});
 
 
 

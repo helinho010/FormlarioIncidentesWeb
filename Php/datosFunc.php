@@ -31,7 +31,7 @@
         </div>
         <div class="col">
             <label for="exampleFormControlInput1" class="form-label">Cargo</label>
-            <input type="text" class="form-control" id="cargo" value="<?php echo trim($_SESSION['soluCargo']);?>">
+            <input type="text" class="form-control" readonly id="cargo" value="<?php echo trim($_SESSION['soluCargo']);?>">
         </div>
     </div>
 </form>

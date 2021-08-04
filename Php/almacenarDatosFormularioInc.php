@@ -2,7 +2,7 @@
     require_once '../../sistemasdetickets/Php/BDConexion.php';
     include_once 'datosIniciales.php';
     session_start();
-    /*$mensaje = false;
+    $mensaje = false;
     if(count($_SESSION)>0 && $_POST['control'] == 1)
     {
         $codigo=$_POST['codigo'];
@@ -11,12 +11,13 @@
         $oficina=$_POST['oficina'];
         $reportadoPor=$_POST['reportadoPor'];
         $cargo=$_POST['cargo'];
-        $datelleIncidente=$_POST['detalle'];    
+        $datelleIncidente=$_POST['detalle'];
+        $idFuncionario = $_POST['idFuncionario'];    
         try {
             $conx = new Conexionbd();  
             $conx-> setUsuario($usuariobd);
             $conx-> setContrasenia($contraseniabd);
-            $conx->setQuery("insert into incidentedeinformacionfuncionario (codigo, fecha, hora, oficina, reportadoPor, cargo, datelleIncidente) values ('$codigo', '$fecha','$hora','$oficina','$reportadoPor', '$cargo', '$datelleIncidente');");
+            $conx->setQuery("insert into incidentedeinformacionfuncionario (id_func, codigo, fecha, hora, oficina, reportadoPor, cargo, datelleIncidente) values ('$idFuncionario','$codigo', '$fecha','$hora','$oficina','$reportadoPor', '$cargo', '$datelleIncidente');");
             $conx-> RealizarConsulta();
             $repConsulta1 = $conx->getConsulta();
             $row=pg_fetch_row($repConsulta1);
@@ -24,7 +25,7 @@
             $mensaje = $th;
         }
         $mensaje = true;
-    }*/
+    }
     
     /*$OrigenIncidenteInterno=$_POST[''];
     $OrigenIncidenteExterno=$_POST[''];
@@ -64,6 +65,6 @@
     $responsable2=$_POST[''];
     $responsable3=$_POST[''];
     $responsable4=$_POST[''];*/
-    
-    print_r($_POST); 
+    echo $mensaje;
+    //print_r($_POST); 
 ?>

@@ -18,7 +18,7 @@
 
 <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
     <input type="checkradius" class="btn-check" id="btncheck1" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck1"><?php echo mostrarBtnPorFuncionario();?></label>
+    <label class="btn btn-outline-primary" for="btncheck1">Llenar Formulario<?php //echo mostrarBtnPorFuncionario();?></label>
 
     <input type="checkradius" class="btn-check" id="modDatosFunc" autocomplete="off">
     <label class="btn btn-outline-primary" for="modDatosFunc">Modificar datos Personales</label>

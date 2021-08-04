@@ -2,7 +2,6 @@
     require_once '../../sistemasdetickets/Php/BDConexion.php';
     include_once 'datosIniciales.php';
     session_start();
-
     function getCodigoFormulario()
     {
         $resultado = "0";
@@ -16,7 +15,7 @@
             $resultado = "".$row[0]+1;
             if(strlen($resultado)==3)
             {
-            }elseif (strlen()==2) {
+            }elseif (strlen($resultado)==2) {
                 $resultado = "0".$resultado;
             }else {
                 $resultado = "00".$resultado;
@@ -26,6 +25,30 @@
         }
        return $resultado;
     }
+     
+     if(!empty($_POST['codForm']))
+      {
+          echo "<input type='hidden' id='controlFormulario' value='$_POST[codForm]'>";
+        try {
+            /*$conx = new Conexionbd();  
+            $conx-> setUsuario('helio');
+            $conx-> setContrasenia('H3l10');
+            $conx->setQuery("select * from incidentedeinformacionfuncionario where codigo = '$_POST[codForm]'");
+            $conx-> RealizarConsulta();
+            $respuesta1=pg_fetch_row($conx->getConsulta());
+            $conx->setQuery("select * from incidentedeinformacionosi where codigo = '$_POST[codForm]'");
+            $conx-> RealizarConsulta();
+            $respuesta2=pg_fetch_row($conx->getConsulta());
+            $conx->setQuery("select * from incidentedeinformacionti where codigo = '$_POST[codForm]'");
+            $conx-> RealizarConsulta();
+            $respuesta3=pg_fetch_row($conx->getConsulta());*/
+
+            
+        } catch (\Throwable $th) { 
+            //$resultado = $th;
+        }  
+      }
+    
 
     if ( count($_SESSION) > 0)
     {
@@ -92,6 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <input type="text" class="visually-hidden" id="idFuncionario" maxlength="5" value="<?php echo $_SESSION['soluidFuncionario'];?>">
                                     <div class="col-md-1 titulo"><label for="fecha">Fecha:</label> </div>
                                     <div class="col-md-2 titulo2"><input type="date" name="fecha" id="fecha" maxlength="15" value="<?php echo date("Y-m-d");?>"  style="font-size: 10px;"></div>
                                     <div class="col-md-1 titulo"><label for="hora">Hora:</label> </div>
@@ -146,16 +170,16 @@
                                         </div>
                                         <div class="row" style="padding: 3px; padding-bottom: 5px;">
                                             <div class="col-md-1 titulo">Alto</div>
-                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="prioridadAlto" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 text-center titulo">Medio</div>
-                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="prioridadMedio" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 text-center titulo">Bajo</div>
-                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="prioridadBajo" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <textarea name="" id="" cols="30" rows="3" placeholder="Revision Incial"></textarea>
+                                    <textarea name="" id="revisionInicial" cols="30" rows="3" placeholder="Revision Incial"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -178,13 +202,13 @@
                                     <div class="col-md-6" style="border-right: black 1px solid; ;">
                                         <div class="row">
                                         <label for="" style="font-size: 9px;">Realizado por:</label>
-                                        <textarea name="" id="" cols="30" rows="2" placeholder=""></textarea>
+                                        <textarea name="" id="seguimientoOsi" cols="30" rows="2" placeholder=""></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
                                             <label for="" style="font-size: 9px;">Realizado por:</label>  
-                                            <textarea name="" id="" cols="30" rows="2" placeholder=""></textarea>
+                                            <textarea name="" id="seguimientoTi" cols="30" rows="2" placeholder=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +235,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                        <textarea name="" id="" cols="30" rows="3" placeholder="Solucion que realizao el Encargado de Tecnolgia de la Informacion"></textarea>
+                                        <textarea name="" id="solucionTi" cols="30" rows="3" placeholder="Solucion que realizao el Encargado de Tecnolgia de la Informacion"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -237,11 +261,11 @@
                                         </div>
                                         <div class="row text-center" style="padding: 7px;">
                                             <div class="col-md-1 titulo">ALTA</div>
-                                            <div class="col-md-2"><input type="text" name="" id="" style="border: black 1px solid; text-align: center;"></div>
+                                            <div class="col-md-2"><input type="text" name="" id="" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 titulo">MEDIA</div>
-                                            <div class="col-md-2"><input type="text" name="" id="" style="border: black 1px solid; text-align: center;"></div>
+                                            <div class="col-md-2"><input type="text" name="" id="" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 titulo">BAJA</div>
-                                            <div class="col-md-2"><input type="text" name="" id="" style="border: black 1px solid; text-align: center;"></div>
+                                            <div class="col-md-2"><input type="text" name="" id="" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -423,13 +447,32 @@
             </div>
             <div class="col-md-1">
                 <div class="btnsFormulario">
-                    <button type="button" class="btn btn-success" id="guardarDatos" >Guardar Datos</button>        
+                    <button type="button" class="btn btn-success" id="guardarDatos" data-bs-toggle="modal" data-bs-target="#exampleModal">Guardar Datos</button>        
                     <button type="button" class="btn btn-warning" id="borrarDatos">Borrar datos</button>
                     <button type="button" class="btn btn-secondary" id="volverMenu" >Volver al menu</button>
                 </div>
             </div>
         </div>
     </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmacion de datos</h5>
+                <button type="button" class="btn-close text-start" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Esta seguro de guardar los cambios...?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="btnNo">No guardar cambios</button>
+                <button type="button" class="btn btn-success" id="btnSi">Guardar Cambios</button>
+            </div>
+            </div>
+        </div>
+        </div>
     
 <script src="../Js/jquery-3.6.0.min.js"></script>
 <script src="../Js/bootstrap.min.js"></script>

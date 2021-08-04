@@ -68,7 +68,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="resultados">
+                        <div class="resultados scrollParaMostrar" id="reporteDeFormularios">
+                            
                         </div>
                     </div>
                 </div>
@@ -100,6 +101,7 @@
          $("#exitoError").attr("hidden","true");
          $("#Opciones").load("../Php/botonesAccion.php");
          $("#datosDelFuncionario").load("../Php/datosFunc.php");
+         $("#reporteDeFormularios").load("../Php/reporteIncidentesLlenados.php");
          $(".datos-y-notificaciones").removeAttr("hidden");
          </script>
          ';   
