@@ -42,7 +42,7 @@
       <th scope="col">Codigo Formulario</th>
       <th scope="col">Fecha</th>
       <th scope="col">Hora</th>
-      <th scope="col">Oficina</th>
+      <th scope="col">Ver/Editar</th>
     </tr>
   </thead>
   <tbody>
@@ -64,8 +64,8 @@
         } ?>
         <!--td><?php echo "<a href='#' id='".$codigoFormulario."'><img src='../Imagenes/Iconos/2x/".getIconoEditVer()."' alt='editar' width='10px;'><a>";?></td-->
         <td><?php echo '<form action="Php/formularioIncidentes.php" method="POST">
-    <input type="hidden" name="codForm" value="'.$codigoFormulario.'">
-    <button type="submit"> <img src="Imagenes/Iconos/2x/'.getIconoEditVer().'" alt="editar" width="10px;"> </button>
+    <input type="text" name="codForm" value="'.$codigoFormulario.'" hidden="true">
+    <button type="submit" style="height:30px; background:none; border:none; padding:none;outline: inherit;"> <img src="Imagenes/Iconos/1x/'.getIconoEditVer().'" alt="editar"> </button>
 </form>';?></td>  
  <?php     }    
     } catch (\Throwable $th) {
@@ -81,7 +81,3 @@
         header("Location:http://formulario.com.bo:2402/");
     }
 ?>
-<form action="formularioIncidentes.php" methood="post">
-    <input type="hidden" name="codForm" value="">
-    <button type="submit"> </button>
-</form>

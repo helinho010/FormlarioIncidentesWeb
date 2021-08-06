@@ -1,23 +1,27 @@
-function noHanilitadoParaEditar() 
+function HabilitadoParaEditar() 
 {
-  var cargoFuncionario = $("#cargo").val();
+  var cargoFuncionario = $("#controlFormulariocargo").val();
   if (cargoFuncionario.toLowerCase() != "osi" && cargoFuncionario.toLowerCase() != "ti") {
+      $("#n2").addClass("disableDiv");
       $("#n3").addClass("disableDiv");
       $("#n4").addClass("disableDiv");
       $("#n5").addClass("disableDiv");
       $("#n6").addClass("disableDiv");
       $("#n7").addClass("disableDiv");
+      $("#guardarDatos").attr("disabled");
   }
   else{
     if (cargoFuncionario.toLowerCase() == "osi") {
       $("#n2").addClass("disableDiv");
       $("#n3").addClass("disableDiv");
       $("#n5").addClass("disableDiv");
+      $("#lugarTi").addClass("disableDiv");
     }else{
       if(cargoFuncionario.toLowerCase() == "ti"){
         $("#n2").addClass("disableDiv");
         $("#n6").addClass("disableDiv");
         $("#n7").addClass("disableDiv");
+        $("#lugarOsi").addClass("disableDiv");
       }else{
 
       }
@@ -25,7 +29,7 @@ function noHanilitadoParaEditar()
   }
 }
 
-function noHanilitadoInicial() 
+function HabilitadoInicial() 
 {
       $("#n3").addClass("disableDiv");
       $("#n4").addClass("disableDiv");
@@ -36,7 +40,7 @@ function noHanilitadoInicial()
 
 
 $("#guardarDatos").click(function(){
-   if (($('#cargo').val()).toLowerCase() != "osi" || ($('#cargo').val()).toLowerCase() != "ti" ) {
+   if (($('#controlFormulariocargo').val()).toLowerCase() != "osi" && ($('#controlFormulariocargo').val()).toLowerCase() != "ti" ) {
      var idFuncionario = $("#idFuncionario").val();
      var codigoIncidente=$("#codigoFormulario").text();
      var fechaInicidente = $("#fecha").val();
@@ -55,7 +59,7 @@ $("#guardarDatos").click(function(){
       "cargo":cargoFuncionario,
       "detalle":detalleIncidente,
       "idFuncionario": idFuncionario
-    };
+      };
       $(document).on("click","button",function(event){
         if ($(this).attr("id") == "btnSi")
         {
@@ -66,9 +70,9 @@ $("#guardarDatos").click(function(){
             success: function(respuesta) {
               if (respuesta == 1) {
                 alert("Datos almacenados exitosamente");
-                window.location.href = "http://formulario.com.bo:2402/"; 
+                window.location.href = "http://192.168.2.52:2402/"; 
               }else{
-                alert("Los datos no fueron almacenados!");
+                alert("Los datos no fueron almacenados!" + respuesta);
               }
             }
           });
@@ -77,8 +81,9 @@ $("#guardarDatos").click(function(){
       });
      
    }else{
-     if(($('#cargo').val()).toLowerCase() == "ti")
+     if(($('#controlFormulariocargo').val()).toLowerCase() == "ti")
      {
+        var codigoFormulario = $("#controlFormulario").val();
         var OrigenIncidenteInterno=$("#interno").val();
         var OrigenIncidenteExterno=$("#externo").val();
         var PrioridadAlto=$("#prioridadAlto").val();
@@ -89,6 +94,7 @@ $("#guardarDatos").click(function(){
         var solucionTi=$("#solucionTi").val();
         var datos = {
           "control":2,
+          "codigoFormulario": codigoFormulario,
           "OrigenIncidenteInterno":OrigenIncidenteInterno,
           "OrigenIncidenteExterno":OrigenIncidenteExterno,
           "PrioridadAlto":PrioridadAlto,
@@ -106,33 +112,71 @@ $("#guardarDatos").click(function(){
               url: "../Php/almacenarDatosFormularioInc.php",
               data : datos,
               success: function(respuesta) {
-                alert("Datos almacenados exitosamente");
-                window.location.href = "http://formulario.com.bo:2402/";
+                if (respuesta == 1) {
+                  alert("Datos almacenados exitosamente");
+                  window.location.href = "http://192.168.2.52:2402/"; 
+                }else{
+                  alert("Los datos no fueron almacenados!" + respuesta);
+                }
               }
             });
           }else{
           } 
         });
      }else{
-      if (($('#cargo').val()).toLowerCase() == "osi"){
-
+      if (($('#controlFormulariocargo').val()).toLowerCase() == "osi"){ 
+            var datos = {
+            "control":3,
+            "codigoFormulario": codigoFormulario
+          };
+          $(document).on("click","button",function(event){
+            if ($(this).attr("id") == "btnSi")
+            {
+              $.ajax({
+                type: "POST",
+                url: "../Php/almacenarDatosFormularioInc.php",
+                data : datos,
+                success: function(respuesta) {
+                  if (respuesta == 1) {
+                    alert("Datos almacenados exitosamente");
+                    window.location.href = "http://192.168.2.52:2402/"; 
+                  }else{
+                    alert("Los datos no fueron almacenados!" + respuesta);
+                  }
+                }
+              });
+            }else{
+            } 
+          });
       }else{
 
       }
      }
    }
-   //alert(($('#cargo').val()).toLowerCase());
 });
 
 
 /*
-* Control de donde se inicio el formulario, editar o el boton llenar formulario
+* Control para mostrar el formulario (con inputs no habilitados), derivados desde el boton llenar formulario
+* o editar
 */
 $(document).ready(function(){
-  if ($("#controlFormulario").val() !="")
+  if ($("#controlFormulario").val().length === 16)
   {
-    noHanilitadoParaEditar();
+    HabilitadoParaEditar();
+    
   }else{
-    noHanilitadoInicial();
+    HabilitadoInicial();
+           
   }
 });
+
+/*
+* Boton de volver al menu
+*/
+$("#volverMenu").click(function(){
+  window.location.href="http://192.168.2.52:2402/";
+});
+
+
+

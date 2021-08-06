@@ -58,7 +58,7 @@ $("button").on("click", function (params) {
       success: function(respuesta){
           if (respuesta == 'ok') {
               console.log("Session Cerrada con exito");
-              window.location.href="http://formulario.com.bo:2402/";
+              window.location.href="http://192.168.2.52:2402/";
               //alert(respuesta);
         exit;
           } else {
@@ -115,7 +115,7 @@ $("button").on("click", function (params) {
   *Funcion para llenar formularios de incidentes en seguridad de la Informacion
   */
     $(document).on("click","#btncheck1",function(){
-      window.location.href="http://formulario.com.bo:2402/Php/formularioIncidentes.php";
+      window.location.href="http://192.168.2.52:2402/Php/formularioIncidentes.php";
       //window.location.href="http://192.168.0.16:2402/Php/formularioIncidentes.php";
     });
 
@@ -126,7 +126,7 @@ $("button").on("click", function (params) {
 
 
 /*
-* Editar formularios
+* Editar formularios 
 */
 
 $(document).on("click", "a", function(e){
@@ -140,6 +140,9 @@ $(document).on("click", "a", function(e){
     }
   });
 });
+
+
+
 
 
 

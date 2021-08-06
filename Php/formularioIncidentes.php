@@ -25,30 +25,60 @@
         }
        return $resultado;
     }
+    $valorInput = !empty($_POST['codForm'])? $_POST['codForm']:0;
+    $codForm = !empty($_POST['codForm'])? $_POST['codForm']:"SOLUINC-2021-".getCodigoFormulario();
+    echo "<input type='text' id='controlFormulario' value='$valorInput' hidden='true'>";
      
      if(!empty($_POST['codForm']))
       {
-          echo "<input type='hidden' id='controlFormulario' value='$_POST[codForm]'>";
+        echo "<input type='text' id='controlFormulariocargo' value='$_SESSION[soluCargo]' hidden='true'>";
         try {
-            /*$conx = new Conexionbd();  
+            $conx = new Conexionbd();  
             $conx-> setUsuario('helio');
             $conx-> setContrasenia('H3l10');
             $conx->setQuery("select * from incidentedeinformacionfuncionario where codigo = '$_POST[codForm]'");
             $conx-> RealizarConsulta();
             $respuesta1=pg_fetch_row($conx->getConsulta());
-            $conx->setQuery("select * from incidentedeinformacionosi where codigo = '$_POST[codForm]'");
+            //print_r($respuesta1);
+            $conx->setQuery("select * from incidentedeinformacionosi where codigoForm = '$_POST[codForm]'");
             $conx-> RealizarConsulta();
             $respuesta2=pg_fetch_row($conx->getConsulta());
-            $conx->setQuery("select * from incidentedeinformacionti where codigo = '$_POST[codForm]'");
+            //print_r($respuesta2);
+            $conx->setQuery("select * from incidentedeinformacionti where codigoForm = '$_POST[codForm]'");
             $conx-> RealizarConsulta();
-            $respuesta3=pg_fetch_row($conx->getConsulta());*/
-
-            
+            $respuesta3=pg_fetch_row($conx->getConsulta());
+            //print_r($respuesta3);
         } catch (\Throwable $th) { 
             //$resultado = $th;
         }  
       }
-    
+      $fechaFormulario = !empty($_POST['codForm'])?$respuesta1[3]:date("Y-m-d");
+      $horaFormulario = !empty($_POST['codForm'])?$respuesta1[4]:date('H:m');
+      $oficinaFormulario = !empty($_POST['codForm'])?$respuesta1[5]:$Oficna_inicial;
+      $reportadoPorFormulario = !empty($_POST['codForm'])?$respuesta1[6]:$_SESSION['soluNombre']." ".$_SESSION['soluApPat']." ".$_SESSION['soluApMat'];
+      $cargoFormulario = !empty($_POST['codForm'])?$respuesta1[7]:$_SESSION['soluCargo'];
+      $detalleIncidenteFormulario = !empty($_POST['codForm'])?$respuesta1[8]:"";
+      $origenIncidenteInterno = !empty($_POST['codForm'])?$respuesta3[2]:"";
+      $origenIncidenteExterno = !empty($_POST['codForm'])?$respuesta3[3]:"";
+      $prioridadAlto = !empty($_POST['codForm'])?$respuesta3[4]:"";
+      $prioridadMedio = !empty($_POST['codForm'])?$respuesta3[5]:"";
+      $prioridadBajo =!empty($_POST['codForm'])?$respuesta3[6]:"";
+      $seguimientoTi = !empty($_POST['codForm'])?$respuesta3[8]:"";
+      $revisionInicidenteInicial = !empty($_POST['codForm'])?$respuesta3[7]:"";
+      $seguimientoOsi = !empty($_POST['codForm'])?$respuesta2[2]:"";
+      $solucionTi = !empty($_POST['codForm'])?$respuesta3[9]:"";
+      $criticidadAlta = !empty($_POST['codForm'])?$respuesta2[3]:"";
+      $criticidadMedia = !empty($_POST['codForm'])?$respuesta2[4]:"";
+      $criticidadBaja = !empty($_POST['codForm'])?$respuesta2[5]:"";
+      $clasificacionIncidenteList[6] = "checked";
+      $impactoIncidente = !empty($_POST['codForm'])?$respuesta2[25]:"";
+      $activosAfectados = !empty($_POST['codForm'])?$respuesta2[26]:"";
+      $accionesFuturas = !empty($_POST['codForm'])?$respuesta2[27]:"";
+      $responsableDeAcciones1 = !empty($_POST['codForm'])?$respuesta2[28]:"";
+      $responsableDeAcciones2 = !empty($_POST['codForm'])?$respuesta2[29]:"";
+      $responsableDeAcciones3 = !empty($_POST['codForm'])?$respuesta2[30]:"";
+      $responsableDeAcciones4 = !empty($_POST['codForm'])?$respuesta2[31]:"";
+
 
     if ( count($_SESSION) > 0)
     {
@@ -94,10 +124,10 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="row">
-                                        <span class="titulo">CODIGO:</span>
+                                        <span class="titulo">CODIGO</span>
                                     </div>
                                     <div class="row" style="border-top: black 1px solid;">
-                                        <span class="titulo" id="codigoFormulario">SOLUINC-2021-<?php echo getCodigoFormulario(); ?></span>
+                                        <span class="titulo" id="codigoFormulario"><?php echo $codForm;?></span>
                                     </div>
                                 </div>
                             </div>
@@ -117,20 +147,20 @@
                                 <div class="row">
                                     <input type="text" class="visually-hidden" id="idFuncionario" maxlength="5" value="<?php echo $_SESSION['soluidFuncionario'];?>">
                                     <div class="col-md-1 titulo"><label for="fecha">Fecha:</label> </div>
-                                    <div class="col-md-2 titulo2"><input type="date" name="fecha" id="fecha" maxlength="15" value="<?php echo date("Y-m-d");?>"  style="font-size: 10px;"></div>
+                                    <div class="col-md-2 titulo2"><input type="date" name="fecha" id="fecha" maxlength="15" value="<?php echo $fechaFormulario;?>"  style="font-size: 10px;"></div>
                                     <div class="col-md-1 titulo"><label for="hora">Hora:</label> </div>
-                                    <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" maxlength="10" value="<?php echo date('H:m');?>"></div>
+                                    <div class="col-md-3 titulo2"><input type="text"  name="hora" id="hora" maxlength="10" value="<?php echo $horaFormulario;?>"></div>
                                     <div class="col-md-1 titulo"><label for="oficina">Oficnica:</label> </div>
-                                    <div class="col-md-4 titulo2"><input type="text" name="" id="oficina" maxlength="70" value="<?php echo $Oficna_inicial;?>"></div>
+                                    <div class="col-md-4 titulo2"><input type="text" name="" id="oficina" maxlength="70" value="<?php echo $oficinaFormulario;?>"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 titulo"> <label for="reportado-por">Reportado por:</label></div>
-                                    <div class="col-md-4 titulo2"><input type="text" name="reportado-por" id="reportado-por" maxlength="50" value="<?php echo $_SESSION['soluNombre']." ".$_SESSION['soluApPat']." ".$_SESSION['soluApMat'];?>"></div>
+                                    <div class="col-md-4 titulo2"><input type="text" name="reportado-por" id="reportado-por" maxlength="50" value="<?php echo $reportadoPorFormulario;?>"></div>
                                     <div class="col-md-1 titulo"><label for="cargo">Cargo:</label></div>
-                                    <div class="col-md-5 titulo2"><input type="text" name="cargo" id="cargo" maxlength="70" value="<?php echo $_SESSION['soluCargo'];?>"></div>  
+                                    <div class="col-md-5 titulo2"><input type="text" name="cargo" id="cargo" maxlength="70" value="<?php echo $cargoFormulario;?>" readonly></div>  
                                 </div>
                                 <div class="row">
-                                    <textarea name="detalleInicidente" id="detalleIncidente" cols="30" rows="3" maxlength="300" placeholder="Detalle el evento registrado"></textarea>
+                                    <textarea name="detalleInicidente" id="detalleIncidente" cols="30" rows="3" maxlength="300" placeholder="Detalle el evento registrado"><?php echo $detalleIncidenteFormulario;?></textarea>
                                 </div>
                                 </div>  
                             </div>
@@ -157,9 +187,9 @@
                                         </div>
                                         <div class="row" style="padding: 3px; padding-bottom: 3px;">
                                             <div class="col-md-2 titulo"><label for="interno"> Interno:</label></div>
-                                            <div class="col-md-4 text-center"><input type="text" maxlength="1" name="" id="interno" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)" onblur="verificarCasillas()"></div>
+                                            <div class="col-md-4 text-center"><input type="text" value ="<?php echo $origenIncidenteInterno?>" maxlength="1" name="" id="interno" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)" onblur="verificarCasillas()"></div>
                                             <div class="col-md-2 titulo"><label for="externo"> Externo:</label></div>
-                                            <div class="col-md-4 text-center"><input type="text" maxlength="1" name="" id="externo" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)" onblur="verificarCasillas()"></div>
+                                            <div class="col-md-4 text-center"><input type="text" value="<?php echo $origenIncidenteExterno?>" maxlength="1" name="" id="externo" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)" onblur="verificarCasillas()"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
@@ -170,16 +200,16 @@
                                         </div>
                                         <div class="row" style="padding: 3px; padding-bottom: 5px;">
                                             <div class="col-md-1 titulo">Alto</div>
-                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="prioridadAlto" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-3"><input type="text" value="<?php echo $prioridadAlto?>" maxlength="1" name="" id="prioridadAlto" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 text-center titulo">Medio</div>
-                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="prioridadMedio" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-3"><input type="text" value="<?php echo $prioridadMedio?>" maxlength="1" name="" id="prioridadMedio" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 text-center titulo">Bajo</div>
-                                            <div class="col-md-3"><input type="text" maxlength="1" name="" id="prioridadBajo" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-3"><input type="text" value="<?php echo $prioridadBajo?>" maxlength="1" name="" id="prioridadBajo" class="text-center" style="border: black 1px solid;" onkeypress="verificarCaracter(this)"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <textarea name="" id="revisionInicial" cols="30" rows="3" placeholder="Revision Incial"></textarea>
+                                    <textarea name="" id="revisionInicial" cols="30" rows="3" placeholder="Revision Incial"><?php echo $revisionInicidenteInicial?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -199,16 +229,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6" style="border-right: black 1px solid; ;">
+                                    <div class="col-md-6" id="lugarOsi" style="border-right: black 1px solid; ;">
                                         <div class="row">
                                         <label for="" style="font-size: 9px;">Realizado por:</label>
-                                        <textarea name="" id="seguimientoOsi" cols="30" rows="2" placeholder=""></textarea>
+                                        <textarea name="" id="seguimientoOsi" cols="30" rows="2" placeholder=""><?php echo $seguimientoOsi?></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6" id="lugarTi">
                                         <div class="row">
                                             <label for="" style="font-size: 9px;">Realizado por:</label>  
-                                            <textarea name="" id="seguimientoTi" cols="30" rows="2" placeholder=""></textarea>
+                                            <textarea name="" id="seguimientoTi" cols="30" rows="2" placeholder=""><?php echo $seguimientoTi?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -261,11 +291,11 @@
                                         </div>
                                         <div class="row text-center" style="padding: 7px;">
                                             <div class="col-md-1 titulo">ALTA</div>
-                                            <div class="col-md-2"><input type="text" name="" id="" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-2"><input type="text" value="<?php echo $criticidadAlta?>" name="" id="criticidadAlta" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 titulo">MEDIA</div>
-                                            <div class="col-md-2"><input type="text" name="" id="" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-2"><input type="text" value="<?php echo $criticidadMedia?>" name="" id="criticidadMedia" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
                                             <div class="col-md-1 titulo">BAJA</div>
-                                            <div class="col-md-2"><input type="text" name="" id="" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
+                                            <div class="col-md-2"><input type="text" value="<?php echo $criticidadBaja?>" name="" id="criticidadBaja" maxlength="1" style="border: black 1px solid; text-align: center;" onkeypress="verificarCaracter(this)"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -273,81 +303,81 @@
                                     <label for="" class="titulo">Clasificacion de Incidentes de Seguridad</label>
                                     <div class="col-md-5 subtitulo text-start estiloCheckBox-Incidentes">
                                             <div class="row" >
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[0];?>></div>
                                             <div>Perdida de servicio</div>
                                             </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[1];?>></div>
                                             <div>Pérdida de equipo o instalaciones</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[2];?>></div>
                                             <div>Sobrecargo o mal funcionamiento del sistema</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[3];?>></div>
                                             <div>Errores humanos</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[4];?>></div>
                                             <div>Incumplimiento de políticas o procedimientos</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[5];?>></div>
                                             <div>Deficiencias de controles de seguridad física</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[6];?>></div>
                                             <div>Cambios incontrolables en el sistema</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[7];?>></div>
                                             <div>Mal funcionamiento del software</div>  
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[8];?>></div>
                                             <div>Mal funcionamiento del hardware</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[9];?>></div>
                                             <div>Código malicioso</div>
                                         </div>
                                     </div>
                                     <div class="col-md-7 subtitulo text-start estiloCheckBox-Incidentes">
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[10];?>></div>
                                             <div>Negación de servicio</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[11];?>></div>
                                             <div>Errores resultantes de datos incompletos o no actualizados</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[12];?>></div>
                                             <div>Violaciones en la confidencialidad e integridad de la información</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[13];?>></div>
                                             <div>Mal uso de los sistemas de información</div>
                                         </div>
                                         <div class="row text-start">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[14];?>></div>
                                             <div>Accesos no autorizados exitosos, sin perjuicios visibles a componentes tecnológicos</div>
                                         </div>
                                         <div class="row fluid">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[15];?>></div>
                                             <div>Intentos recurrentes y no recurrentes de acceso no autorizado</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[16];?>></div>
                                             <div>Ataques Externos o Internos</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[17];?>></div>
                                             <div>Modificacion no Autorizada</div>
                                         </div>
                                         <div class="row">
-                                            <div><input type="checkbox" name="" id=""></div>
+                                            <div><input type="checkbox" name="" id="" <?php echo $clasificacionIncidenteList[18];?>></div>
                                             <div>Divulgacion de informacion sensible</div> 
                                         </div>
                                     </div>
@@ -363,12 +393,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="" cols="30" rows="2"></textarea>
+                                            <textarea name="" id="" cols="30" rows="2"><?php echo $impactoIncidente;?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="" cols="30" rows="2"></textarea>
+                                            <textarea name="" id="" cols="30" rows="2"><?php echo $activosAfectados?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -390,7 +420,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <textarea name="" id="" cols="30" rows="3"></textarea>
+                                    <textarea name="" id="" cols="30" rows="3"><?php echo $accionesFuturas?></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 titulo text-center" style="border-top: black 1px solid;">
@@ -400,24 +430,24 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="" cols="30" rows="1"></textarea>
+                                            <textarea name="" id="" cols="30" rows="1"><?php echo $responsableDeAcciones1?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="" cols="30" rows="1"></textarea>
+                                            <textarea name="" id="" cols="30" rows="1"><?php echo $responsableDeAcciones2?></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="" cols="30" rows="1"></textarea>
+                                            <textarea name="" id="" cols="30" rows="1"><?php echo $responsableDeAcciones3?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="" cols="30" rows="1"></textarea>
+                                            <textarea name="" id="" cols="30" rows="1"><?php echo $responsableDeAcciones4?></textarea>
                                         </div>
                                     </div>
                                 </div>
