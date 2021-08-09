@@ -72,7 +72,7 @@ $("#guardarDatos").click(function(){
                 alert("Datos almacenados exitosamente");
                 window.location.href = "http://192.168.2.52:2402/"; 
               }else{
-                alert("Los datos no fueron almacenados!" + respuesta);
+                alert("Los datos no fueron almacenados!, intentelo de nuevo o comuniquese con el Encargado de Tecnoligua de la Informacion" + respuesta);
               }
             }
           });
@@ -125,9 +125,70 @@ $("#guardarDatos").click(function(){
         });
      }else{
       if (($('#controlFormulariocargo').val()).toLowerCase() == "osi"){ 
+            var codigoFormulario = $("#controlFormulario").val();
+            var seguimientoOsi= $("#seguimientoOsi").val();
+            var evaluacionOsiAlta= $("#criticidadAlta").val();
+            var evaluacionOsiMedia= $("#criticidadMedia").val();
+            var evaluacionOsiBaja= $("#criticidadBaja").val();
+            var perdidaDeservicio= $("#perdidaServicio").prop('checked');
+            var perdidaDeEquipoOInstalaciones= $("#perdidaDeEquipoInstalciones").prop('checked');
+            var sobrecargoMalFuncionamientoDelSistema= $("#sobrecargoMalFuncionamientoSistema").prop('checked');
+            var erroresHumanos= $("#erroresHumanos").prop('checked');
+            var inclumplimientoPoliticasProcedimientos= $("#incumplimientoDePolitcas").prop('checked');
+            var deficienciasDeControlDeSeguridadFisica= $("#deficienciasControlesSeguridad").prop('checked');
+            var cambiosIncontrolablesEnElSistema= $("#cambiosSistema").prop('checked');
+            var malFuncionamientoDelHardware= $("#malFuncionamientoSoftware").prop('checked');
+            var malFuncionamientoHardware= $("#malFuncionamientoHardware").prop('checked');
+            var codigoMalicioso= $("#codigoMalicioso").prop('checked');
+            var negacionDeServicios= $("#negacionServicios").prop('checked');
+            var erroresIncompletosOnoActualizados= $("#erroresDatosIncompletosNoActualizados").prop('checked');
+            var violacionesAlaConfidencialidadIntegridad= $("#violacionesIC").prop('checked');
+            var malUsoDeLosSistemasDeInformacion= $("#malUsoSistemasInf").prop('checked');
+            var accesosNoAutorizados= $("#accesosNoAutorizadosExitosos").prop('checked');
+            var intentosRecurrentesNoRecurrentes= $("#intentosRecurrentesDeAccesosNoAutorizados").prop('checked');
+            var ataquesInternosExternos= $("#ataquesIntExt").prop('checked');
+            var modificacionNoAutorizada= $("#modificacionesNoAutorizadas").prop('checked');
+            var divulgacionDeInfomracion= $("#divulgacionInformacionSensible").prop('checked');
+            var inpactoIncidente= $("#inpactoIncidente").val();
+            var activosAfectados= $("#activosAfectados").val();
+            var accionesAtomarAFuturo= $("#accionesFuturasAtomar").val();
+            var responsable1= $("#responsable1").val();
+            var responsable2= $("#responsable2").val();
+            var responsable3= $("#responsable3").val();
+            var responsable4= $("#responsable4").val();
             var datos = {
             "control":3,
-            "codigoFormulario": codigoFormulario
+            "codigoFormulario": codigoFormulario,
+            "seguimientoOsi":seguimientoOsi,
+            "evaluacionOsiAlta":evaluacionOsiAlta,
+            "evaluacionOsiMedia":evaluacionOsiMedia,
+            "evaluacionOsiBaja":evaluacionOsiBaja,
+            "perdidaDeservicio":perdidaDeservicio,
+            "perdidaDeEquipoOInstalaciones":perdidaDeEquipoOInstalaciones,
+            "sobrecargoMalFuncionamientoDelSistema":sobrecargoMalFuncionamientoDelSistema,
+            "erroresHumanos":erroresHumanos,
+            "inclumplimientoPoliticasProcedimientos":inclumplimientoPoliticasProcedimientos,
+            "deficienciasDeControlDeSeguridadFisica":deficienciasDeControlDeSeguridadFisica,
+            "cambiosIncontrolablesEnElSistema":cambiosIncontrolablesEnElSistema,
+            "malFuncionamientoDelHardware":malFuncionamientoDelHardware,
+            "malFuncionamientoHardware":malFuncionamientoHardware,
+            "codigoMalicioso":codigoMalicioso,
+            "negacionDeServicios":negacionDeServicios,
+            "erroresIncompletosOnoActualizados":erroresIncompletosOnoActualizados,
+            "violacionesAlaConfidencialidadIntegridad":violacionesAlaConfidencialidadIntegridad,
+            "malUsoDeLosSistemasDeInformacion":malUsoDeLosSistemasDeInformacion,
+            "accesosNoAutorizados":accesosNoAutorizados,
+            "intentosRecurrentesNoRecurrentes":intentosRecurrentesNoRecurrentes,
+            "ataquesInternosExternos":ataquesInternosExternos,
+            "modificacionNoAutorizada":modificacionNoAutorizada,
+            "divulgacionDeInfomracion":divulgacionDeInfomracion,
+            "inpactoIncidente":inpactoIncidente,
+            "activosAfectados":activosAfectados,
+            "accionesAtomarAFuturo":accionesAtomarAFuturo,
+            "responsable1":responsable1,
+            "responsable2":responsable2,
+            "responsable3":responsable3,
+            "responsable4":responsable4 
           };
           $(document).on("click","button",function(event){
             if ($(this).attr("id") == "btnSi")
@@ -141,7 +202,7 @@ $("#guardarDatos").click(function(){
                     alert("Datos almacenados exitosamente");
                     window.location.href = "http://192.168.2.52:2402/"; 
                   }else{
-                    alert("Los datos no fueron almacenados!" + respuesta);
+                    alert("Los datos no fueron almacenados, intente mas tarde por favor" + respuesta);
                   }
                 }
               });

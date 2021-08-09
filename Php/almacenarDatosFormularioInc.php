@@ -44,37 +44,47 @@
             $mensaje = $th;
         }
     }elseif (count($_SESSION)>0 && $_POST['control'] == 3) {
-        /*$seguimientoOsi=$_POST[''];
-        $evaluacionOsiAlta=$_POST[''];
-        $evaluacionOsiMedia=$_POST[''];
-        $evaluacionOsiBaja=$_POST[''];
-        $perdidaDeservicio=$_POST[''];
-        $perdidaDeEquipoOInstalaciones=$_POST[''];
-        $sobrecargoMalFuncionamientoDelSistema=$_POST[''];
-        $erroresHumanos=$_POST[''];
-        $InclumplimientoPoliticasProcedimientos=$_POST[''];
-        $deficienciasDeControlDeSeguridadFisica=$_POST[''];
-        $cambiosIncontrolablesEnElSistema=$_POST[''];
-        $malFuncionamientoDelHardware=$_POST[''];
-        $malFuncionamientoHardware=$_POST[''];
-        $codigoMalicioso=$_POST[''];
-        $negacionDeServicios=$_POST[''];
-        $ErroresIncompletosOnoActualizados=$_POST[''];
-        $violacionesAlaConfidencialidadIntegridad=$_POST[''];
-        $malUsoDeLosSistemasDeInformacion=$_POST[''];
-        $accesosNoAutorizados=$_POST[''];
-        $intentosRecurrentesNoRecurrentes=$_POST[''];
-        $ataquesInternosExternos=$_POST[''];
-        $modificacionNoAutorizada=$_POST[''];
-        $divulgacionDeInfomracion=$_POST[''];
-        $inpactoIncidente=$_POST[''];
-        $activosAfectados=$_POST[''];
-        $accionesAtomarAFuturo=$_POST[''];
-        $responsable1=$_POST[''];
-        $responsable2=$_POST[''];
-        $responsable3=$_POST[''];
-        $responsable4=$_POST[''];*/
-        $mensaje = $_POST['control']."yes ya entro por aca"  ;
+        /*$codigoIncidente = $_POST['codigoFormulario'];
+        $seguimientoOsi=$_POST['seguimientoOsi'];
+        $evaluacionOsiAlta=$_POST['evaluacionOsiAlta'];
+        $evaluacionOsiMedia=$_POST['evaluacionOsiMedia'];
+        $evaluacionOsiBaja=$_POST['evaluacionOsiBaja'];
+        $perdidaDeservicio=$_POST['perdidaDeservicio'];
+        $perdidaDeEquipoOInstalaciones=$_POST['perdidaDeEquipoOInstalaciones'];
+        $sobrecargoMalFuncionamientoDelSistema=$_POST['sobrecargoMalFuncionamientoDelSistema'];
+        $erroresHumanos=$_POST['erroresHumanos'];
+        $inclumplimientoPoliticasProcedimientos=$_POST['inclumplimientoPoliticasProcedimientos'];
+        $deficienciasDeControlDeSeguridadFisica=$_POST['deficienciasDeControlDeSeguridadFisica'];
+        $cambiosIncontrolablesEnElSistema=$_POST['cambiosIncontrolablesEnElSistema'];
+        $malFuncionamientoDelHardware=$_POST['malFuncionamientoDelHardware'];
+        $malFuncionamientoHardware=$_POST['malFuncionamientoHardware'];
+        $codigoMalicioso=$_POST['codigoMalicioso'];
+        $negacionDeServicios=$_POST['negacionDeServicios'];
+        $erroresIncompletosOnoActualizados=$_POST['erroresIncompletosOnoActualizados'];
+        $violacionesAlaConfidencialidadIntegridad=$_POST['violacionesAlaConfidencialidadIntegridad'];
+        $malUsoDeLosSistemasDeInformacion=$_POST['malUsoDeLosSistemasDeInformacion'];
+        $accesosNoAutorizados=$_POST['accesosNoAutorizados'];
+        $intentosRecurrentesNoRecurrentes=$_POST['intentosRecurrentesNoRecurrentes'];
+        $ataquesInternosExternos=$_POST['ataquesInternosExternos'];
+        $modificacionNoAutorizada=$_POST['modificacionNoAutorizada'];
+        $divulgacionDeInfomracion=$_POST['divulgacionDeInfomracion'];
+        $inpactoIncidente=$_POST['inpactoIncidente'];
+        $activosAfectados=$_POST['activosAfectados'];
+        $accionesAtomarAFuturo=$_POST['accionesAtomarAFuturo'];
+        $responsable1=$_POST['responsable1'];
+        $responsable2=$_POST['responsable2'];
+        $responsable3=$_POST['responsable3'];
+        $responsable4=$_POST['responsable4'];
+        try {
+            $conx = new Conexionbd();  
+            $conx-> setUsuario($usuariobd);
+            $conx-> setContrasenia($contraseniabd);
+            $conx->setQuery("insert into incidentedeinformacionosi (codigoForm,seguimientoOsi,evaluacionOsiAlta,evaluacionOsiMedia,evaluacionOsiBaja,perdidaDeservicio,perdidaDeEquipoOInstalaciones,sobrecargoMalFuncionamientoDelSistema,erroresHumanos,InclumplimientoPoliticasProcedimientos,deficienciasDeControlDeSeguridadFisica,cambiosIncontrolablesEnElSistema,malFuncionamientoDelHardware,malFuncionamientoHardware,codigoMalicioso,negacionDeServicios,ErroresIncompletosOnoActualizados,violacionesAlaConfidencialidadIntegridad,malUsoDeLosSistemasDeInformacion,accesosNoAutorizados,intentosRecurrentesNoRecurrentes,ataquesInternosExternos,modificacionNoAutorizada,divulgacionDeInfomracion,inpactoIncidente,activosAfectados,accionesAtomarAFuturo,responsable1,responsable2,responsable3,responsable4) values ('$codigoIncidente','$seguimientoOsi','$evaluacionOsiAlta','$evaluacionOsiMedia','$evaluacionOsiBaja','$perdidaDeservicio','$perdidaDeEquipoOInstalaciones','$sobrecargoMalFuncionamientoDelSistema','$erroresHumanos','$inclumplimientoPoliticasProcedimientos','$deficienciasDeControlDeSeguridadFisica','$cambiosIncontrolablesEnElSistema','$malFuncionamientoDelHardware','$malFuncionamientoHardware','$codigoMalicioso','$negacionDeServicios','$erroresIncompletosOnoActualizados','$violacionesAlaConfidencialidadIntegridad','$malUsoDeLosSistemasDeInformacion','$accesosNoAutorizados','$intentosRecurrentesNoRecurrentes','$ataquesInternosExternos','$modificacionNoAutorizada','$divulgacionDeInfomracion','$inpactoIncidente','$activosAfectados','$accionesAtomarAFuturo','$responsable1','$responsable2','$responsable3','$responsable4');");
+            $conx-> RealizarConsulta();
+            $mensaje = true;
+        } catch (\Throwable $th) {
+            $mensaje = $th;
+        }*/
     }else{
         $mensaje="Hubo un error en el al pasar los datos";
     }
