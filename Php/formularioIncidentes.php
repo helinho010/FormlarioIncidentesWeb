@@ -27,7 +27,7 @@
     }
     $valorInput = !empty($_POST['codForm'])? $_POST['codForm']:0;
     $codForm = !empty($_POST['codForm'])? $_POST['codForm']:"SOLUINC-2021-".getCodigoFormulario();
-    echo "<input type='text' id='controlFormulario' value='$valorInput' hidden='true'>";
+    echo "<input type='text' id='controlFormulario' value='$valorInput' hidden='true' >";
     echo "<input type='text' id='controlFormulariocargo' value='$_SESSION[soluCargo]' hidden='true'>";
      if(!empty($_POST['codForm']))
       {
@@ -69,7 +69,20 @@
       $criticidadAlta = !empty($_POST['codForm'])?$respuesta2[3]:"";
       $criticidadMedia = !empty($_POST['codForm'])?$respuesta2[4]:"";
       $criticidadBaja = !empty($_POST['codForm'])?$respuesta2[5]:"";
-      $clasificacionIncidenteList[6] = "checked";
+      if ( !empty($_POST['codForm']) ) {
+        $inicio = 0;
+        for ($i=6; $i < count($respuesta2) && $i <= 24; $i++) 
+        { 
+            if ( $respuesta2[$i] == 't')
+            {
+                $clasificacionIncidenteList[$inicio] = "checked";    
+            }else{
+            }
+            $inicio++;
+        }
+      }else{
+        $clasificacionIncidenteList = array();
+      }
       $impactoIncidente = !empty($_POST['codForm'])?$respuesta2[25]:"";
       $activosAfectados = !empty($_POST['codForm'])?$respuesta2[26]:"";
       $accionesFuturas = !empty($_POST['codForm'])?$respuesta2[27]:"";
@@ -264,7 +277,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                        <textarea name="" id="solucionTi" cols="30" rows="3" placeholder="Solucion que realizao el Encargado de Tecnolgia de la Informacion"></textarea>
+                                        <textarea name="" id="solucionTi" cols="30" rows="3" placeholder="Solucion que realizao el Encargado de Tecnolgia de la Informacion"><?php echo $solucionTi;?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -360,7 +373,7 @@
                                             <div>Mal uso de los sistemas de información</div>
                                         </div>
                                         <div class="row text-start">
-                                            <div><input type="checkbox" name="accesosNoAutorizadosExitosos" id="" <?php echo $clasificacionIncidenteList[14];?>></div>
+                                            <div><input type="checkbox" name="" id="accesosNoAutorizadosExitosos" <?php echo $clasificacionIncidenteList[14];?>></div>
                                             <div>Accesos no autorizados exitosos, sin perjuicios visibles a componentes tecnológicos</div>
                                         </div>
                                         <div class="row fluid">

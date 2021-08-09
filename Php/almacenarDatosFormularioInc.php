@@ -23,7 +23,7 @@
         } catch (\Throwable $th) {
             $mensaje = $th;
         }
-    }elseif (count($_SESSION)>0 && $_POST['control'] == 2) {
+    }elseif ( count($_SESSION)>0 && $_POST['control'] == 2 ) {
         $codigoIncidente = $_POST['codigoFormulario'];
         $OrigenIncidenteInterno=$_POST['OrigenIncidenteInterno'];
         $OrigenIncidenteExterno=$_POST['OrigenIncidenteExterno'];
@@ -37,6 +37,8 @@
             $conx = new Conexionbd();  
             $conx-> setUsuario($usuariobd);
             $conx-> setContrasenia($contraseniabd);
+            $conx->setQuery("delete from incidentedeinformacionti where codigoForm = '$codigoIncidente'");
+            $conx-> RealizarConsulta();
             $conx->setQuery("insert into incidentedeinformacionti (codigoForm, OrigenIncidenteInterno,Origenincidenteexterno,PrioridadAlto,PrioridadMedio,PrioridadBajo,revisionInicialTi,seguimientoTi,solucionTi) values ('$codigoIncidente','$OrigenIncidenteInterno','$OrigenIncidenteExterno','$PrioridadAlto','$PrioridadMedio','$PrioridadBajo','$revisionInicialTi','$seguimientoTi','$solucionTi')");
             $conx-> RealizarConsulta();
             $mensaje = true;
@@ -44,7 +46,7 @@
             $mensaje = $th;
         }
     }elseif (count($_SESSION)>0 && $_POST['control'] == 3) {
-        /*$codigoIncidente = $_POST['codigoFormulario'];
+        $codigoIncidente = $_POST['codigoFormulario'];
         $seguimientoOsi=$_POST['seguimientoOsi'];
         $evaluacionOsiAlta=$_POST['evaluacionOsiAlta'];
         $evaluacionOsiMedia=$_POST['evaluacionOsiMedia'];
@@ -79,14 +81,16 @@
             $conx = new Conexionbd();  
             $conx-> setUsuario($usuariobd);
             $conx-> setContrasenia($contraseniabd);
+            $conx->setQuery("delete from incidentedeinformacionosi where codigoForm = '$codigoIncidente'");
+            $conx-> RealizarConsulta();
             $conx->setQuery("insert into incidentedeinformacionosi (codigoForm,seguimientoOsi,evaluacionOsiAlta,evaluacionOsiMedia,evaluacionOsiBaja,perdidaDeservicio,perdidaDeEquipoOInstalaciones,sobrecargoMalFuncionamientoDelSistema,erroresHumanos,InclumplimientoPoliticasProcedimientos,deficienciasDeControlDeSeguridadFisica,cambiosIncontrolablesEnElSistema,malFuncionamientoDelHardware,malFuncionamientoHardware,codigoMalicioso,negacionDeServicios,ErroresIncompletosOnoActualizados,violacionesAlaConfidencialidadIntegridad,malUsoDeLosSistemasDeInformacion,accesosNoAutorizados,intentosRecurrentesNoRecurrentes,ataquesInternosExternos,modificacionNoAutorizada,divulgacionDeInfomracion,inpactoIncidente,activosAfectados,accionesAtomarAFuturo,responsable1,responsable2,responsable3,responsable4) values ('$codigoIncidente','$seguimientoOsi','$evaluacionOsiAlta','$evaluacionOsiMedia','$evaluacionOsiBaja','$perdidaDeservicio','$perdidaDeEquipoOInstalaciones','$sobrecargoMalFuncionamientoDelSistema','$erroresHumanos','$inclumplimientoPoliticasProcedimientos','$deficienciasDeControlDeSeguridadFisica','$cambiosIncontrolablesEnElSistema','$malFuncionamientoDelHardware','$malFuncionamientoHardware','$codigoMalicioso','$negacionDeServicios','$erroresIncompletosOnoActualizados','$violacionesAlaConfidencialidadIntegridad','$malUsoDeLosSistemasDeInformacion','$accesosNoAutorizados','$intentosRecurrentesNoRecurrentes','$ataquesInternosExternos','$modificacionNoAutorizada','$divulgacionDeInfomracion','$inpactoIncidente','$activosAfectados','$accionesAtomarAFuturo','$responsable1','$responsable2','$responsable3','$responsable4');");
             $conx-> RealizarConsulta();
             $mensaje = true;
         } catch (\Throwable $th) {
             $mensaje = $th;
-        }*/
+        }
     }else{
-        $mensaje="Hubo un error en el al pasar los datos";
+        $mensaje="Hubo un error en la session o en el control del formulario";
     }
 
     echo $mensaje;

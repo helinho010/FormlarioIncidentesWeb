@@ -40,7 +40,7 @@ function HabilitadoInicial()
 
 
 $("#guardarDatos").click(function(){
-   if (($('#controlFormulariocargo').val()).toLowerCase() != "osi" && ($('#controlFormulariocargo').val()).toLowerCase() != "ti" ) {
+   if (($('#controlFormulariocargo').val()).toLowerCase() !== "osi" && ($('#controlFormulariocargo').val()).toLowerCase() !== "ti" ) {
      var idFuncionario = $("#idFuncionario").val();
      var codigoIncidente=$("#codigoFormulario").text();
      var fechaInicidente = $("#fecha").val();
@@ -81,7 +81,7 @@ $("#guardarDatos").click(function(){
       });
      
    }else{
-     if(($('#controlFormulariocargo').val()).toLowerCase() == "ti")
+     if(($('#controlFormulariocargo').val()).toLowerCase() === "ti")
      {
         var codigoFormulario = $("#controlFormulario").val();
         var OrigenIncidenteInterno=$("#interno").val();
@@ -124,7 +124,7 @@ $("#guardarDatos").click(function(){
           } 
         });
      }else{
-      if (($('#controlFormulariocargo').val()).toLowerCase() == "osi"){ 
+      if (($('#controlFormulariocargo').val()).toLowerCase() === "osi"){ 
             var codigoFormulario = $("#controlFormulario").val();
             var seguimientoOsi= $("#seguimientoOsi").val();
             var evaluacionOsiAlta= $("#criticidadAlta").val();

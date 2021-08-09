@@ -20,20 +20,22 @@
     {
         if (strtolower($_SESSION['soluCargo']) != "osi" && strtolower($_SESSION['soluCargo']) != "ti")
         {
-            $sql = "select codigo, fecha, oficina from incidentedeinformacionfuncionario where id_func = ".$_SESSION['soluidFuncionario']." order by 1 desc";
+            $sql = "select codigo, fecha, hora, revisado_por from incidentedeinformacionfuncionario where id_func = ".$_SESSION['soluidFuncionario']." order by 1 desc";
         }
         else {
-            $sql = "select codigo, fecha, oficina from incidentedeinformacionfuncionario order by 1 desc";
+            $sql = "select codigo, fecha, hora, revisado_por from incidentedeinformacionfuncionario order by 1 desc";
         }
         
     try {
-        $conx = new Conexionbd();  
-        $conx-> setUsuario($usuariobd);
-        $conx-> setContrasenia($contraseniabd);
-        $conx->setQuery($sql);
-        $conx-> RealizarConsulta();
-        $repConsulta1 = $conx->getConsulta();
-        $tablaResultado = pg_fetch_all($repConsulta1);
+            $conx = new Conexionbd();  
+            $conx-> setUsuario($usuariobd);
+            $conx-> setContrasenia($contraseniabd);
+            $conx->setQuery($sql);
+            $conx-> RealizarConsulta();
+            //$conx->setQuery("select * form ");
+            //$conx-> RealizarConsulta();
+            $repConsulta1 = $conx->getConsulta();
+            $tablaResultado = pg_fetch_all($repConsulta1);
 ?>
 <table class="table table-hover">
   <thead>
@@ -42,6 +44,7 @@
       <th scope="col">Codigo Formulario</th>
       <th scope="col">Fecha</th>
       <th scope="col">Hora</th>
+      <th scope="col">Revisado Por</th>
       <th scope="col">Ver/Editar</th>
     </tr>
   </thead>
