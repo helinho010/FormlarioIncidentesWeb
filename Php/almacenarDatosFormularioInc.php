@@ -41,6 +41,8 @@
             $conx-> RealizarConsulta();
             $conx->setQuery("insert into incidentedeinformacionti (codigoForm, OrigenIncidenteInterno,Origenincidenteexterno,PrioridadAlto,PrioridadMedio,PrioridadBajo,revisionInicialTi,seguimientoTi,solucionTi) values ('$codigoIncidente','$OrigenIncidenteInterno','$OrigenIncidenteExterno','$PrioridadAlto','$PrioridadMedio','$PrioridadBajo','$revisionInicialTi','$seguimientoTi','$solucionTi')");
             $conx-> RealizarConsulta();
+            $conx->setQuery("update incidenteDeInformacionFuncionario set revisadoti='$_SESSION[soluCargo]' where codigo = '$_POST[codigoFormulario]'");
+            $conx-> RealizarConsulta();
             $mensaje = true;
         } catch (\Throwable $th) {
             $mensaje = $th;
@@ -84,6 +86,10 @@
             $conx->setQuery("delete from incidentedeinformacionosi where codigoForm = '$codigoIncidente'");
             $conx-> RealizarConsulta();
             $conx->setQuery("insert into incidentedeinformacionosi (codigoForm,seguimientoOsi,evaluacionOsiAlta,evaluacionOsiMedia,evaluacionOsiBaja,perdidaDeservicio,perdidaDeEquipoOInstalaciones,sobrecargoMalFuncionamientoDelSistema,erroresHumanos,InclumplimientoPoliticasProcedimientos,deficienciasDeControlDeSeguridadFisica,cambiosIncontrolablesEnElSistema,malFuncionamientoDelHardware,malFuncionamientoHardware,codigoMalicioso,negacionDeServicios,ErroresIncompletosOnoActualizados,violacionesAlaConfidencialidadIntegridad,malUsoDeLosSistemasDeInformacion,accesosNoAutorizados,intentosRecurrentesNoRecurrentes,ataquesInternosExternos,modificacionNoAutorizada,divulgacionDeInfomracion,inpactoIncidente,activosAfectados,accionesAtomarAFuturo,responsable1,responsable2,responsable3,responsable4) values ('$codigoIncidente','$seguimientoOsi','$evaluacionOsiAlta','$evaluacionOsiMedia','$evaluacionOsiBaja','$perdidaDeservicio','$perdidaDeEquipoOInstalaciones','$sobrecargoMalFuncionamientoDelSistema','$erroresHumanos','$inclumplimientoPoliticasProcedimientos','$deficienciasDeControlDeSeguridadFisica','$cambiosIncontrolablesEnElSistema','$malFuncionamientoDelHardware','$malFuncionamientoHardware','$codigoMalicioso','$negacionDeServicios','$erroresIncompletosOnoActualizados','$violacionesAlaConfidencialidadIntegridad','$malUsoDeLosSistemasDeInformacion','$accesosNoAutorizados','$intentosRecurrentesNoRecurrentes','$ataquesInternosExternos','$modificacionNoAutorizada','$divulgacionDeInfomracion','$inpactoIncidente','$activosAfectados','$accionesAtomarAFuturo','$responsable1','$responsable2','$responsable3','$responsable4');");
+            $conx-> RealizarConsulta();
+            $conx->setQuery("insert into incidentedeinformacionti (revisadoosi) values ('$_SESSION[soluCargo]')");
+            $conx-> RealizarConsulta();
+            $conx->setQuery("update incidenteDeInformacionFuncionario set revisadoosi='$_SESSION[soluCargo]' where codigo = '$_POST[codigoFormulario]'");
             $conx-> RealizarConsulta();
             $mensaje = true;
         } catch (\Throwable $th) {

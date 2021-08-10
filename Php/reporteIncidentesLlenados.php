@@ -20,10 +20,10 @@
     {
         if (strtolower($_SESSION['soluCargo']) != "osi" && strtolower($_SESSION['soluCargo']) != "ti")
         {
-            $sql = "select codigo, fecha, hora, revisado_por from incidentedeinformacionfuncionario where id_func = ".$_SESSION['soluidFuncionario']." order by 1 desc";
+            $sql = "select codigo, fecha, hora, revisadoti ||'/'|| revisadoosi from incidentedeinformacionfuncionario where id_func = ".$_SESSION['soluidFuncionario']." order by 1 desc";
         }
         else {
-            $sql = "select codigo, fecha, hora, revisado_por from incidentedeinformacionfuncionario order by 1 desc";
+            $sql = "select codigo, fecha, hora, revisadoti ||'/'|| revisadoosi from incidentedeinformacionfuncionario order by 1 desc";
         }
         
     try {
@@ -32,12 +32,10 @@
             $conx-> setContrasenia($contraseniabd);
             $conx->setQuery($sql);
             $conx-> RealizarConsulta();
-            //$conx->setQuery("select * form ");
-            //$conx-> RealizarConsulta();
             $repConsulta1 = $conx->getConsulta();
             $tablaResultado = pg_fetch_all($repConsulta1);
 ?>
-<table class="table table-hover">
+<table class="table table-hover text-center">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -63,8 +61,7 @@
      
       <td><?php echo $value1; if(preg_match("/SOLUINC-/i",$value1, )) {$codigoFormulario = $value1;}?></td>
     
- <?php
-        } ?>
+ <?php } ?>
         <!--td><?php echo "<a href='#' id='".$codigoFormulario."'><img src='../Imagenes/Iconos/2x/".getIconoEditVer()."' alt='editar' width='10px;'><a>";?></td-->
         <td><?php echo '<form action="Php/formularioIncidentes.php" method="POST">
     <input type="text" name="codForm" value="'.$codigoFormulario.'" hidden="true">
@@ -81,6 +78,6 @@
 <?php
     } //end if
     else {
-        header("Location:http://formulario.com.bo:2402/");
+        header("Location:http://192.168.2.52:2402/");
     }
 ?>

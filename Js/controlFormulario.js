@@ -40,7 +40,8 @@ function HabilitadoInicial()
 
 
 $("#guardarDatos").click(function(){
-   if (($('#controlFormulariocargo').val()).toLowerCase() !== "osi" && ($('#controlFormulariocargo').val()).toLowerCase() !== "ti" ) {
+   if (($('#controlFormulariocargo').val()).toLowerCase() !== "osi" && ($('#controlFormulariocargo').val()).toLowerCase() !== "ti" ) 
+   {
      var idFuncionario = $("#idFuncionario").val();
      var codigoIncidente=$("#codigoFormulario").text();
      var fechaInicidente = $("#fecha").val();

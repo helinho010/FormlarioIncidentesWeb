@@ -27,7 +27,7 @@
     }
     $valorInput = !empty($_POST['codForm'])? $_POST['codForm']:0;
     $codForm = !empty($_POST['codForm'])? $_POST['codForm']:"SOLUINC-2021-".getCodigoFormulario();
-    echo "<input type='text' id='controlFormulario' value='$valorInput' hidden='true' >";
+    echo "<input type='text' id='controlFormulario' value='$valorInput' hidden='true'>";
     echo "<input type='text' id='controlFormulariocargo' value='$_SESSION[soluCargo]' hidden='true'>";
      if(!empty($_POST['codForm']))
       {
@@ -221,7 +221,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <textarea name="" id="revisionInicial" cols="30" rows="3" placeholder="Revision Incial"><?php echo $revisionInicidenteInicial?></textarea>
+                                    <textarea maxlength="350" name="" id="revisionInicial" cols="30" rows="3" placeholder="Revision Incial"><?php echo $revisionInicidenteInicial?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -244,13 +244,13 @@
                                     <div class="col-md-6" id="lugarOsi" style="border-right: black 1px solid; ;">
                                         <div class="row">
                                         <label for="" style="font-size: 9px;">Realizado por:</label>
-                                        <textarea name="" id="seguimientoOsi" cols="30" rows="2" placeholder=""><?php echo $seguimientoOsi?></textarea>
+                                        <textarea maxlength="90" name="" id="seguimientoOsi" cols="30" rows="2" placeholder=""><?php echo $seguimientoOsi?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6" id="lugarTi">
                                         <div class="row">
                                             <label for="" style="font-size: 9px;">Realizado por:</label>  
-                                            <textarea name="" id="seguimientoTi" cols="30" rows="2" placeholder=""><?php echo $seguimientoTi?></textarea>
+                                            <textarea maxlength="90" name="" id="seguimientoTi" cols="30" rows="2" placeholder=""><?php echo $seguimientoTi?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -277,7 +277,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                        <textarea name="" id="solucionTi" cols="30" rows="3" placeholder="Solucion que realizao el Encargado de Tecnolgia de la Informacion"><?php echo $solucionTi;?></textarea>
+                                        <textarea maxlength= "350" name="" id="solucionTi" cols="30" rows="3" placeholder="Solucion que realizao el Encargado de Tecnolgia de la Informacion"><?php echo $solucionTi;?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -405,12 +405,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="inpactoIncidente" cols="30" rows="2"><?php echo $impactoIncidente;?></textarea>
+                                            <textarea maxlength="256" name="" id="inpactoIncidente" cols="30" rows="2"><?php echo $impactoIncidente;?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="activosAfectados" cols="30" rows="2"><?php echo $activosAfectados?></textarea>
+                                            <textarea maxlength= "256" name="" id="activosAfectados" cols="30" rows="2"><?php echo $activosAfectados?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -432,7 +432,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <textarea name="" id="accionesFuturasAtomar" cols="30" rows="3"><?php echo $accionesFuturas?></textarea>
+                                    <textarea maxlength="350" name="" id="accionesFuturasAtomar" cols="30" rows="3"><?php echo $accionesFuturas?></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 titulo text-center" style="border-top: black 1px solid;">
@@ -442,24 +442,24 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="responsable1" cols="30" rows="1"><?php echo $responsableDeAcciones1?></textarea>
+                                            <textarea maxlength="75" name="" id="responsable1" cols="30" rows="1"><?php echo $responsableDeAcciones1?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="responsable2" cols="30" rows="1"><?php echo $responsableDeAcciones2?></textarea>
+                                            <textarea maxlength="75" name="" id="responsable2" cols="30" rows="1"><?php echo $responsableDeAcciones2?></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="responsable3" cols="30" rows="1"><?php echo $responsableDeAcciones3?></textarea>
+                                            <textarea  maxlength="75"name="" id="responsable3" cols="30" rows="1"><?php echo $responsableDeAcciones3?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <textarea name="" id="responsable4" cols="30" rows="1"><?php echo $responsableDeAcciones4?></textarea>
+                                            <textarea  maxlength="75"name="" id="responsable4" cols="30" rows="1"><?php echo $responsableDeAcciones4?></textarea>
                                         </div>
                                     </div>
                                 </div>

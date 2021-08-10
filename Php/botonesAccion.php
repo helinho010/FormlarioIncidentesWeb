@@ -3,22 +3,26 @@
 
     function mostrarBtnPorFuncionario()
     {
-        $textoMostrado = " ";
-        if (trim(strtolower($_SESSION['soluCargo'])) == 'cajero' || trim(strtolower($_SESSION['soluCargo'])) == 'plataforma') 
+        $btnMostrado = " ";
+        if (trim(strtolower($_SESSION['soluCargo'])) != "osi" && trim(strtolower($_SESSION['soluCargo'])) != "ti") 
         {
-           $textoMostrado = "Llenar Formulario";
-        }elseif (trim(strtolower($_SESSION['soluCargo'])) == 'eti') {
-            $textoMostrado = "Mostrar Formularios <span class='badge bg-danger'>4</span>"; 
-        }elseif (trim(strtolower($_SESSION[soluCargo])) == 'osi') {
-            $textoMostrado = "Llenar Formulario <span class='badge bg-danger'>4</span>"; 
+           $btnMostrado = '<input type="checkradius" class="btn-check" id="btncheck1" autocomplete="off">
+           <label class="btn btn-outline-primary" for="btncheck1">Llenar Formulario</label>';
+        }else{
+            $btnMostrado = '<!--input type="checkradius" class="btn-check" id="btncheck1" autocomplete="off"-->
+            <label class="btn btn-outline-primary" for="btncheck1">Llenar Formulario</label>'; 
         }
-        return $textoMostrado;
+        
+        return $btnMostrado;
     }
 ?>
 
 <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkradius" class="btn-check" id="btncheck1" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck1">Llenar Formulario<?php //echo mostrarBtnPorFuncionario();?></label>
+    <!--input type="checkradius" class="btn-check" id="btncheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck1">Llenar Formulario</label-->
+    <?php
+      echo mostrarBtnPorFuncionario();
+    ?>
 
     <input type="checkradius" class="btn-check" id="modDatosFunc" autocomplete="off">
     <label class="btn btn-outline-primary" for="modDatosFunc">Modificar datos Personales</label>
